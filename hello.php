@@ -15,7 +15,7 @@ if (!$link) {
 
 print('接続に成功しました。<br>');
 
-$result = pg_query('SELECT * FROM togegift');
+$result = pg_query('SELECT * FROM togepgift');
 if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
 }
