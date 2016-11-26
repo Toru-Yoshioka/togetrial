@@ -36,16 +36,7 @@
       visibility:hidden;
       z-index:1;
     }
-    #fadeCss {
-      position:absolute;
-      top:0px;
-      left:0px;
-
-      width:100%;
-      height:100%;
-
-      z-index:1;
-
+    .fadeCss {
       animation: fadeIn 2s ease 0s 1 normal;
       -webkit-animation: fadeIn 2s ease 0s 1 normal;
     }
@@ -63,8 +54,8 @@
     <script type="text/javascript">
     <!--
     function fade() {
-      var target = document.getElementById("fadeCss");
-      target.style.visibility = "visible";
+      var target = document.getElementsByTagName("body");
+      target.classList.add("fadeCss");
     }
     //-->
     </script>
