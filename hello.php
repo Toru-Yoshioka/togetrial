@@ -34,7 +34,7 @@
 
       background-color:#FFFFFF;
       opacity: 1.0;
-      visibility:hidden;
+      display: none;
       z-index:1;
     }
     //-->
