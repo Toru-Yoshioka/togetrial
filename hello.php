@@ -23,22 +23,44 @@
       padding-left: 2%;
       padding-right: 2%;
     }
+    #fadeLayer {
+      position:absolute;
+      top:0px;
+      left:0px;
+
+      width:100%;
+      height:100%;
+
+      background-color:#FFFFFF;
+      opacity:0.75;
+      visibility:hidden;
+      z-index:1;
+}
     //-->
     </style>
+    <script type="text/javascript">
+    <!--
+    function fade() {
+      var target = document.getElementById("fadeLayer");
+      target.style.visibility = "visible";
+    }
+    //-->
+    </script>
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
-      <a href="javascript:void(0);">
+      <a href="javascript:void(0);fade();">
         <img src="./img/giftbox.png"/>
       </a>
-      <a href="javascript:void(0);">
+      <a href="javascript:void(0);fade();">
         <img src="./img/giftbox.png"/>
       </a>
-      <a href="javascript:void(0);">
+      <a href="javascript:void(0);fade();">
         <img src="./img/giftbox.png"/>
       </a>
     </div>
+    <div id="fadeLayer"></div>
     <h3>postgreSQL query result</h3>
     <p>
 <?php
