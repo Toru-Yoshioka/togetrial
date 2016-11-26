@@ -60,13 +60,13 @@
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
       <a href="javascript:fade();">
-        <img src="./img/giftbox.png"/>
+        <img src="./img/giftbox_off.png"/>
       </a>
       <a href="javascript:fade();">
-        <img src="./img/giftbox.png"/>
+        <img src="./img/giftbox_off.png"/>
       </a>
       <a href="javascript:fade();">
-        <img src="./img/giftbox.png"/>
+        <img src="./img/giftbox_off.png"/>
       </a>
     </div>
     <div id="fadeLayer"></div>
