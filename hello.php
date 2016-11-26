@@ -14,40 +14,30 @@
       text-align: center;
       margin-top: 64px;
     }
-    .gift_left {
+    .gift_box_area {
       text-align: inherit;
-      padding-left; 10%;
-      float: left;
+      padding-left: 10%;
+      padding-right: 10%;
     }
-    .gift_center {
-      text-align: inherit;
-      float: left;
-    }
-    .gift_right {
-      text-align: inherit;
-      padding-right; 10%;
+    .gift_box_area img {
+      padding-left: 64px;
+      padding-right: 64px;
     }
     //-->
     </style>
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
-    <div>
-      <div class="gift_left">
-        <a href="javascript:void(0);">
-          <img src="./img/giftbox.png"/>
-        </a>
-      </div>
-      <div class="gift_center">
-        <a href="javascript:void(0);">
-          <img src="./img/giftbox.png"/>
-        </a>
-      </div>
-      <div class="gift_right">
-        <a href="javascript:void(0);">
-          <img src="./img/giftbox.png"/>
-        </a>
-      </div>
+    <div class="gift_box_area">
+      <a href="javascript:void(0);">
+        <img src="./img/giftbox.png"/>
+      </a>
+      <a href="javascript:void(0);">
+        <img src="./img/giftbox.png"/>
+      </a>
+      <a href="javascript:void(0);">
+        <img src="./img/giftbox.png"/>
+      </a>
     </div>
     <h3>postgreSQL query result</h3>
     <p>
