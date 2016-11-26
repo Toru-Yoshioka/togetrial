@@ -17,8 +17,6 @@
     }
     .gift_box_area {
       text-align: center;
-      padding-left: 5%;
-      padding-right: 5%;
     }
     .gift_box_area img {
       padding-left: 2%;
