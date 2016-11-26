@@ -32,7 +32,6 @@
       height:100%;
 
       background-color:#FFFFFF;
-      opacity:0.75;
       visibility:hidden;
       z-index:1;
     }
@@ -54,7 +53,7 @@
     <script type="text/javascript">
     <!--
     function fade() {
-      var target = document.getElementsByTagName("body");
+      var target = document.getElementById("fadeLayer");
       target.classList.add("fadeCss");
     }
     //-->
@@ -73,7 +72,7 @@
         <img src="./img/giftbox.png"/>
       </a>
     </div>
-    <div id="fadeCss"></div>
+    <div id="fadeLayer"></div>
     <h3>postgreSQL query result</h3>
     <p>
 <?php
