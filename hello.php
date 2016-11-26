@@ -15,7 +15,7 @@
       margin-top: 64px;
     }
     .gift_box_area {
-      text-align: inherit;
+      text-align: center;
       padding-left: 5%;
       padding-right: 5%;
     }
