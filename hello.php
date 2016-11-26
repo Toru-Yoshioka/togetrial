@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>PHP Test</title>
-    <style type="css/test">
+    <style type="text/css">
     <!--
     body { background-color: #00A23F; }
     //-->
