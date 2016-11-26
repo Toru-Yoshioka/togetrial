@@ -12,14 +12,27 @@
     }
     .xmas_logo {
       text-align: center;
-      margin-top: 240px;
+      margin-top: 64px;
+    }
+    .gift_left {
+      text-align: inherit;
+      padding-left; 10%;
+      float: left;
+    }
+    .gift_center {
+      text-align: inherit;
+      float: left;
+    }
+    .gift_right {
+      text-align: inherit;
+      padding-right; 10%;
     }
     //-->
     </style>
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
-    <div class="gift_box_area">
+    <div>
       <div class="gift_left">
         <a href="javascript:void(0);">
           <img src="./img/giftbox.png"/>
