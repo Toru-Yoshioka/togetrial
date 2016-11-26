@@ -4,9 +4,10 @@
     <style type="text/css">
     <!--
     body {
-      background-color: #00A23F;
-      background-image: url('./img/bg_xmas.png');
-      background-size: cover;
+      background-color: #F20000;
+      background-image: url('./img/bg_xmas_top.png');
+      background-position: center top;
+      background-size: 100% auto;
     }
     //-->
     </style>
