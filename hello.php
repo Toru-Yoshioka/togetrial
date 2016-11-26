@@ -18,6 +18,19 @@ print('接続に成功しました。<br>');
 $result = pg_query('SELECT * FROM togepgift');
 if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
+} else {
+  for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
+      $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+      print('CODE:<br/>');
+      print($rows['code']);
+      print('<br/>');
+      print('CREATED:<br/>');
+      print($rows['createddate']);
+      print('<br/>');
+      print('PUBLISHED:<br/>');
+      print($rows['published']);
+      print('<br/>');
+  }
 }
 
 $close_flag = pg_close($link);
