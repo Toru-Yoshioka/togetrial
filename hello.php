@@ -16,12 +16,12 @@
     }
     .gift_box_area {
       text-align: inherit;
-      padding-left: 10%;
-      padding-right: 10%;
+      padding-left: 5%;
+      padding-right: 5%;
     }
     .gift_box_area img {
-      padding-left: 64px;
-      padding-right: 64px;
+      padding-left: 2%;
+      padding-right: 2%;
     }
     //-->
     </style>
