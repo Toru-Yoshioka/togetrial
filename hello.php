@@ -3,7 +3,11 @@
     <title>PHP Test</title>
     <style type="text/css">
     <!--
-    body { background-color: #00A23F; }
+    body {
+      background-color: #00A23F;
+      background-image: url('./img/bg_xmas.png');
+      background-size: cover;
+    }
     //-->
     </style>
   </head>
