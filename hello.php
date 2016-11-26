@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>PHP Test</title>
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"/>
     <style type="text/css">
     <!--
     body {
@@ -32,29 +33,16 @@
       height:100%;
 
       background-color:#FFFFFF;
+      opacity: 1.0;
       visibility:hidden;
       z-index:1;
-    }
-    .fadeCss {
-      animation: fadeIn 2s ease 0s 1 normal;
-      -webkit-animation: fadeIn 2s ease 0s 1 normal;
-    }
-    @keyframes fadeIn {
-      0% {opacity: 0}
-      100% {opacity: 1}
-    }
-
-    @-webkit-keyframes fadeIn {
-      0% {opacity: 0}
-      100% {opacity: 1}
     }
     //-->
     </style>
     <script type="text/javascript">
     <!--
     function fade() {
-      var target = document.getElementById("fadeLayer");
-      target.classList.add("fadeCss");
+      $("#fadeLayer").fadeIn("slow");
     }
     //-->
     </script>
