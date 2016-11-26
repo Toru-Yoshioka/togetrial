@@ -42,7 +42,7 @@
     <script type="text/javascript">
     <!--
     function fade() {
-      $("#fadeLayer").fadeIn("slow");
+      // $("#fadeLayer").fadeIn("slow");
     }
     //-->
     </script>
