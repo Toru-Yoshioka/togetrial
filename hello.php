@@ -10,13 +10,32 @@
       background-repeat: no-repeat;
       background-size: 100% auto;
     }
+    .xmas_logo {
+      text-align: center;
+      margin-top: 240px;
+    }
     //-->
     </style>
   </head>
   <body>
-    <?php echo '<p>Hello World</p>'; ?>
-    <h3>ギフトボックス</h3>
-    <img src="./img/giftbox.png"/>
+    <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
+    <div class="gift_box_area">
+      <div class="gift_left">
+        <a href="javascript:void(0);">
+          <img src="./img/giftbox.png"/>
+        </a>
+      </div>
+      <div class="gift_center">
+        <a href="javascript:void(0);">
+          <img src="./img/giftbox.png"/>
+        </a>
+      </div>
+      <div class="gift_right">
+        <a href="javascript:void(0);">
+          <img src="./img/giftbox.png"/>
+        </a>
+      </div>
+    </div>
     <h3>postgreSQL query result</h3>
     <p>
 <?php
