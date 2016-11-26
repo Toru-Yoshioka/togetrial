@@ -1,7 +1,7 @@
 <html>
   <head>
-    <title>PHP Test</title>
-    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"/>
+    <title>Togekichi presents Xmas Advent Gift</title>
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <style type="text/css">
     <!--
     body {
@@ -42,7 +42,7 @@
     <script type="text/javascript">
     <!--
     function fade() {
-      // $("#fadeLayer").fadeIn("slow");
+      $("#fadeLayer").fadeIn("slow");
     }
     //-->
     </script>
