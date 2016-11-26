@@ -35,13 +35,35 @@
       opacity:0.75;
       visibility:hidden;
       z-index:1;
-}
+    }
+    #fadeCss {
+      position:absolute;
+      top:0px;
+      left:0px;
+
+      width:100%;
+      height:100%;
+
+      z-index:1;
+
+      animation: fadeIn 2s ease 0s 1 normal;
+      -webkit-animation: fadeIn 2s ease 0s 1 normal;
+    }
+    @keyframes fadeIn {
+      0% {opacity: 0}
+      100% {opacity: 1}
+    }
+
+    @-webkit-keyframes fadeIn {
+      0% {opacity: 0}
+      100% {opacity: 1}
+    }
     //-->
     </style>
     <script type="text/javascript">
     <!--
     function fade() {
-      var target = document.getElementById("fadeLayer");
+      var target = document.getElementById("fadeCss");
       target.style.visibility = "visible";
     }
     //-->
@@ -60,7 +82,7 @@
         <img src="./img/giftbox.png"/>
       </a>
     </div>
-    <div id="fadeLayer"></div>
+    <div id="fadeCss"></div>
     <h3>postgreSQL query result</h3>
     <p>
 <?php
