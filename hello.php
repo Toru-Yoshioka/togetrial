@@ -1,9 +1,16 @@
 <html>
   <head>
     <title>PHP Test</title>
+    <style type="css/test">
+    <!--
+    .body { background-color: #00A23F; }
+    //-->
+    </style>
   </head>
   <body>
-    <?php echo '<p>Hello World</p>'; ?> 
+    <?php echo '<p>Hello World</p>'; ?>
+    <h3>ギフトボックス</h3>
+    <img src="./giftbox.png"/>
     <h3>postgreSQL query result</h3>
     <p>
 <?php
