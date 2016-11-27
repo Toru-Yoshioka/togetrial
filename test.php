@@ -91,10 +91,6 @@ $UID=null; //個体識別番号
     </div>
     <div id="fadeLayer"></div>
     <h3>postgreSQL query result</h3>
-    <p>
-<?php
-  print($UID);
-?>
-    </p>
+    <p>■<?php print($UID); ?>■</p>
   </body>
 </html>
