@@ -1,9 +1,9 @@
 <?php
-require "mdetect.php";
-// $m = new uagent_info();
+require "./mdetect.php";
+$m = new uagent_info();
 
 $UID=array();
-$m=new MobileESP(); //MobileESPを使用
+// $m=new MobileESP(); //MobileESPを使用
 $UA=$_SERVER['HTTP_USER_AGENT']; //ユーザーエージェントを取得
 $UID=null; //個体識別番号
 
