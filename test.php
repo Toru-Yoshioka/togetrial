@@ -1,33 +1,5 @@
 <?php
-require "./mdetect.php";
-$m = new uagent_info();
-
-$UID=array();
-// $m=new MobileESP(); //MobileESPを使用
-$UA=$_SERVER['HTTP_USER_AGENT']; //ユーザーエージェントを取得
-$UID=null; //個体識別番号
-
-/* DoCoMo */
-//iモードID
-  if(isset($_SERVER['HTTP_X_DCMGUID'],$_GET['guid']) && $_GET['guid']==='ON')
-    $UID[]=$_SERVER['HTTP_X_DCMGUID'];
-/* au */
-//サブスクライバID
-  if(isset($_SERVER['HTTP_X_UP_SUBNO']))
-    $UID[]=$_SERVER['HTTP_X_UP_SUBNO'];
-/* SoftBank */
-//X_JPHONE_UID
-  if(isset($_SERVER['HTTP_X_JPHONE_UID']))
-    $UID[]=$_SERVER['HTTP_X_JPHONE_UID'];
-//個体識別情報
-  elseif(preg_match('|^.+/SN([0-9a-zA-Z]+).*$|',$UA,$match))
-    $UID[]=$match[1];
-/* EMOBILE */
-  if(isset($_SERVER['HTTP_X_EM_UID']))
-    $UID[]=$_SERVER['HTTP_X_EM_UID'];
-//携帯端末で、個体識別番号が1つだけ取得出来た場合、個体識別番号を返す
-  if($m->DetectTierOtherPhones() && count($UID)===1)
-    $UID=$UID[0];
+$i = mt_rand(0, 999);
 ?>
 <html>
   <head>
@@ -41,6 +13,7 @@ $UID=null; //個体識別番号
       background-position: center top;
       background-repeat: no-repeat;
       background-size: 100% auto;
+      color: #ffffff;
     }
     .xmas_logo {
       text-align: center;
@@ -90,7 +63,7 @@ $UID=null; //個体識別番号
       </a>
     </div>
     <div id="fadeLayer"></div>
-    <h3>postgreSQL query result</h3>
-    <p>■<?php print($UID); ?>■</p>
+    <h3>乱数</h3>
+    <p>■<?php print($i); ?>■</p>
   </body>
 </html>
