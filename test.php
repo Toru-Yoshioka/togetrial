@@ -1,5 +1,5 @@
 <?php
-$i = mt_rand(0, 999);
+$i = mt_rand(0, 99);
 ?>
 <html>
   <head>
@@ -51,6 +51,10 @@ $i = mt_rand(0, 999);
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
+    <p>DEBUG:■<?php print($i); ?>■</p>
+<?php
+  if ($i == 77) {
+?>
     <div class="gift_box_area">
       <a href="javascript:fade();">
         <img src="./img/giftbox_off.png"/>
@@ -63,7 +67,9 @@ $i = mt_rand(0, 999);
       </a>
     </div>
     <div id="fadeLayer"></div>
-    <h3>乱数</h3>
-    <p>■<?php print($i); ?>■</p>
+<?php
+  } else {
+  }
+?>
   </body>
 </html>
