@@ -1,8 +1,6 @@
 <?php
 $i = mt_rand(0, 99);
 $addr = $_SERVER['REMOTE_ADDR'];
-$headers = apache_request_headers();
-$ip = $headers['X-Forwarded-For'];
 ?>
 <html>
   <head>
@@ -49,12 +47,26 @@ $ip = $headers['X-Forwarded-For'];
     function fade() {
       $("#fadeLayer").fadeIn("slow");
     }
+    var pluginNamws = '';
+    var getWebKitPlugin = function() {
+      for (var key in navigator.plugins) {
+        var plugin = navigator.plugins[key];
+        pluginNamws = pluginNamws + ',' + plugin.name;
+      }
+    };
     //-->
     </script>
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
-    <p>DEBUG:■REMOTE_ADDR[<?php print($addr); ?>]■X-Forwarded-for[<?php print($ip); ?>]■<?php print($i); ?>■</p>
+    <p>DEBUG:■REMOTE_ADDR[<?php print($addr); ?>]■<?php print($i); ?>■</p>
+    <p>DEBUG:■JacaScript
+    <script type="text/javascript">
+    <!--
+    docyment.writeln($pluginNames);
+    //-->
+    </script>
+    ■</p>
 <?php
   if ($i <= 1 and $i >= 30) {
 ?>
