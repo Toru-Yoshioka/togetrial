@@ -48,12 +48,10 @@ $addr = $_SERVER['REMOTE_ADDR'];
       $("#fadeLayer").fadeIn("slow");
     }
     var pluginNamws = '';
-    var getWebKitPlugin = function() {
-      for (var key in navigator.plugins) {
-        var plugin = navigator.plugins[key];
-        pluginNamws = pluginNamws + ',' + plugin.name;
-      }
-    };
+    for (var key in navigator.plugins) {
+      var plugin = navigator.plugins[key];
+      pluginNamws = pluginNamws + ',' + plugin.name;
+    }
     //-->
     </script>
   </head>
