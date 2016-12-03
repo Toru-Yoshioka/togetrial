@@ -4,7 +4,11 @@ $ip = $_SERVER['REMOTE_ADDR'];
 $hs = $_SERVER['REMOTE_HOST'];
 $ua = $_SERVER['HTTP_USER_AGENT'];
 $rf = $_SERVER['HTTP_REFERER'];
-$browser = get_browser(null, true);
+$ck = $_COOKIE['TOGE_XMAS_PRESENT'];
+if ($ck == '') {
+  $setck = md5(uniqid());
+  setcookie('TOGE_XMAS_PRESENT', $setck);
+}
 ?>
 <html>
   <head>
@@ -51,11 +55,6 @@ $browser = get_browser(null, true);
     function fade() {
       $("#fadeLayer").fadeIn("slow");
     }
-    var pluginNamws = '';
-    for (var key in navigator.plugins) {
-      var plugin = navigator.plugins[key];
-      pluginNamws = pluginNamws + ',' + plugin.name;
-    }
     //-->
     </script>
   </head>
@@ -65,7 +64,7 @@ $browser = get_browser(null, true);
     ■REMOTE_HOST[<?php print($hs); ?>]■<br/>
     ■USER_AGENT[<?php print($ua); ?>]■<br/>
     ■REFERER[<?php print($rf); ?>]■<br/>
-    ■BROWSER[<?php print_r($browser); ?>]■<br/>
+    ■COOKIE[<?php print($ck); ?>]■<br/>
     ■RANDOM[<?php print($i); ?>]■</p>
 <?php
   if ($i <= 1 and $i >= 30) {
