@@ -53,7 +53,7 @@ $i = mt_rand(0, 99);
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <p>DEBUG:■<?php print($i); ?>■</p>
 <?php
-  if ($i <= 79 and $i >= 70) {
+  if ($i <= 1 and $i >= 30) {
 ?>
     <div class="gift_box_area">
       <a href="javascript:fade();">
