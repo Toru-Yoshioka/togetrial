@@ -1,5 +1,6 @@
 <?php
 $i = mt_rand(0, 99);
+$addr = $_SERVER['REMOTE_ADDR'];
 ?>
 <html>
   <head>
@@ -51,7 +52,7 @@ $i = mt_rand(0, 99);
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
-    <p>DEBUG:■<?php print($i); ?>■</p>
+    <p>DEBUG:■<?php print($addr); ?>■<?php print($i); ?>■</p>
 <?php
   if ($i <= 1 and $i >= 30) {
 ?>
