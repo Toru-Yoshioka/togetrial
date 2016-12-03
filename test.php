@@ -1,6 +1,8 @@
 <?php
 $i = mt_rand(0, 99);
-$addr = $_SERVER['REMOTE_ADDR'];
+$ip = $_SERVER['REMOTE_ADDR'];
+$ua = $_SERVER['HTTP_USER_AGENT'];
+$rf = $_SERVER['HTTP_REFERER'];
 ?>
 <html>
   <head>
@@ -57,14 +59,10 @@ $addr = $_SERVER['REMOTE_ADDR'];
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
-    <p>DEBUG:■REMOTE_ADDR[<?php print($addr); ?>]■<?php print($i); ?>■</p>
-    <p>DEBUG:■JacaScript
-    <script type="text/javascript">
-    <!--
-    docyment.writeln($pluginNames);
-    //-->
-    </script>
-    ■</p>
+    <p>DEBUG:■REMOTE_ADDR[<?php print($ip); ?>]■<br/>
+    ■USER_AGENT[<?php print($ua); ?>]■<br/>
+    ■REFERER[<?php print($rf); ?>]■<br/>
+    ■RANDOM[<?php print($i); ?>]■</p>
 <?php
   if ($i <= 1 and $i >= 30) {
 ?>
