@@ -1,6 +1,7 @@
 <?php
 $i = mt_rand(0, 99);
 $addr = $_SERVER['REMOTE_ADDR'];
+$headers = apache_request_headers();
 $ip = $headers['X-Forwarded-For'];
 ?>
 <html>
@@ -53,7 +54,7 @@ $ip = $headers['X-Forwarded-For'];
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
-    <p>DEBUG:■REMOTE_ADDR[<?php print($addr); ?>]■X-Forwarded-for[<?php print($ip); ?>■<?php print($i); ?>■</p>
+    <p>DEBUG:■REMOTE_ADDR[<?php print($addr); ?>]■X-Forwarded-for[<?php print($ip); ?>]■<?php print($i); ?>■</p>
 <?php
   if ($i <= 1 and $i >= 30) {
 ?>
