@@ -61,7 +61,7 @@ $rf = $_SERVER['HTTP_REFERER'];
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <p>DEBUG:■REMOTE_ADDR[<?php print($ip); ?>]■<br/>
-    ■REMOTE_HOST[<?php print($hs); ?>]■<br/>
+    ■REMOTE_HOST[<?php print($hs); ?>]■<br/> 
     ■USER_AGENT[<?php print($ua); ?>]■<br/>
     ■REFERER[<?php print($rf); ?>]■<br/>
     ■RANDOM[<?php print($i); ?>]■</p>
