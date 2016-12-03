@@ -4,6 +4,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
 $hs = $_SERVER['REMOTE_HOST'];
 $ua = $_SERVER['HTTP_USER_AGENT'];
 $rf = $_SERVER['HTTP_REFERER'];
+$browser = get_browser(null, true);
 ?>
 <html>
   <head>
@@ -61,9 +62,10 @@ $rf = $_SERVER['HTTP_REFERER'];
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <p>DEBUG:■REMOTE_ADDR[<?php print($ip); ?>]■<br/>
-    ■REMOTE_HOST[<?php print($hs); ?>]■<br/> 
+    ■REMOTE_HOST[<?php print($hs); ?>]■<br/>
     ■USER_AGENT[<?php print($ua); ?>]■<br/>
     ■REFERER[<?php print($rf); ?>]■<br/>
+    ■BROWSER[<?php print_r($browser); ?>]■<br/>
     ■RANDOM[<?php print($i); ?>]■</p>
 <?php
   if ($i <= 1 and $i >= 30) {
