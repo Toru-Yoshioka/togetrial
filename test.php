@@ -1,7 +1,7 @@
 <?php
 $i = mt_rand(0, 99);
 $ip = $_SERVER['REMOTE_ADDR'];
-$hs = $_SERVER['REMOTE_HOST'];
+$hs = gethostbyaddr($ip);
 $ua = $_SERVER['HTTP_USER_AGENT'];
 $rf = $_SERVER['HTTP_REFERER'];
 $ck = $_COOKIE['TOGE_XMAS_PRESENT'];
