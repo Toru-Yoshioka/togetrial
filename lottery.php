@@ -102,9 +102,9 @@ if ($close_flag){
     }
     .gift_info {
       position: absolute;
-      bottom: 112px;
-      left: 128px;
-      font-size: xx-large;
+      bottom: 92px;
+      left: 144px;
+      font-size: 64pt;
     }
     #fadeLayer {
       position:absolute;
@@ -129,12 +129,13 @@ if ($close_flag){
         <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
         <figcaption class="gift_info">
           <p>
-            ギフトコード:<br/><?php print($gift_code); ?><br/>
-            パケット容量: <?php print($packet_size); ?> MB<br/>
-            有効期限: <?php print($limit_date); ?>
+            ギフトコード<br/><?php print($gift_code); ?>
           </p>
         </figcaption>
       </figure>
+      <h2>パケット容量: <?php print($packet_size); ?> MB</h2>
+      <h2>有効期限: <?php print($limit_date); ?></h2>
+      <br/>
       <h1>おめでとう！</h1>
       <h1><a href="https://my.mineo.jp/">mineo マイページ</a> から受け取ってネ♪</h1>
     </div>
