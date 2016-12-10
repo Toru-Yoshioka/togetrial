@@ -131,7 +131,7 @@ WHERE
 ?>
     <div class="gift_box_area">
       <img src="./img/santa.png"/>
-      <h1>次のプレゼントを準備しているようです...</h1>
+      <h1>次のプレゼントを用意してるみたいだよ...</h1>
     </div>
 <?php
   }
