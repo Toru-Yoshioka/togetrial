@@ -132,7 +132,7 @@ if ($close_flag){
     <h3><?php print($debug_mes); ?></h3>
     <div class="gift_box_area">
       <img src="./img/santa.png"/>
-      <h4>プレゼントを準備中のようです...</h4>
+      <h2>プレゼントを準備中のようです...</h2>
     </div>
 <?php
   }
