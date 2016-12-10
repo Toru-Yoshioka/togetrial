@@ -1,15 +1,3 @@
-<?php
-$i = mt_rand(0, 99);
-$ip = $_SERVER['REMOTE_ADDR'];
-$hs = gethostbyaddr($ip);
-$ua = $_SERVER['HTTP_USER_AGENT'];
-$rf = $_SERVER['HTTP_REFERER'];
-$ck = $_COOKIE['TOGE_XMAS_PRESENT'];
-if ($ck == '') {
-  $setck = md5(uniqid());
-  setcookie('TOGE_XMAS_PRESENT', $setck);
-}
-?>
 <html>
   <head>
     <title>Togekichi presents Xmas Advent Gift</title>
@@ -67,24 +55,18 @@ if ($ck == '') {
     ■REFERER[<?php print($rf); ?>]■<br/>
     ■COOKIE[<?php print($ck); ?>]■<br/>
     ■RANDOM[<?php print($i); ?>]■</p>
+    <p>▼
 <?php
-  if ($i <= 1 and $i >= 30) {
-?>
-    <div class="gift_box_area">
-      <a href="javascript:fade();">
-        <img src="./img/giftbox_off.png"/>
-      </a>
-      <a href="javascript:fade();">
-        <img src="./img/giftbox_off.png"/>
-      </a>
-      <a href="javascript:fade();">
-        <img src="./img/giftbox_off.png"/>
-      </a>
-    </div>
-    <div id="fadeLayer"></div>
-<?php
-  } else {
+foreach($_SERVER as $key=>$value) {
+  if (substr($key,0,5)=="HTTP_") {
+    // $key=str_replace(" ","-",ucwords(strtolower(str_replace("_"," ",substr($key,5)))));
+    print ('KEY:'. $key . '<br/>');
+    // $out[$key]=$value;
+    print ('VALUE:'. $value . '<br/>');
   }
+}
 ?>
+    ▲</p>
+    <div id="fadeLayer"></div>
   </body>
 </html>
