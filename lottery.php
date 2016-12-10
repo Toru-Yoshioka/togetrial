@@ -120,17 +120,17 @@ if ($close_flag){
         ギフトコード: <?php print($gift_code); ?><br/>
         有効期限: <?php print($limit_date); ?>
       </div>
-      <h2>おめでとう！</h2>
-      <h2><a href="https://my.mineo.jp/">mineo マイページ</a> から受け取ってネ♪</h2>
+      <h1>おめでとう！</h1>
+      <h1><a href="https://my.mineo.jp/">mineo マイページ</a> から受け取ってネ♪</h1>
     </div>
 <?php
   } else {
 ?>
     <div class="gift_box_area" style="margin-top: 10%;">
       <img src="./img/giftbox_empty.png"/>
-      <h2>あれ･･･？ 空箱だったみたい(^_^;</h2>
-      <h2>サンタさんがすぐに次のプレゼントを用意してるみたいだよ。</h2>
-      <h2><a href="/">もう１度チャレンジする</a></h2>
+      <h1>あれ･･･？ 空箱だったみたい(^_^;</h1>
+      <h1>サンタさんがすぐに次のプレゼントを用意してるみたいだよ。</h1>
+      <h1><a href="/">もう１度チャレンジする</a></h1>
     </div>
 <?php
   }

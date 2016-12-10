@@ -124,14 +124,14 @@ WHERE
       <a href="javascript:fade();">
         <img src="./img/giftbox_off.png"/>
       </a>
-      <h2>ギフトボックスをタップしてネ♪</h2>
+      <h1>ギフトボックスをタップしてネ♪</h1>
     </div>
 <?php
   } else {
 ?>
     <div class="gift_box_area">
       <img src="./img/santa.png"/>
-      <h2>次のプレゼントを準備しているようです...</h2>
+      <h1>次のプレゼントを準備しているようです...</h1>
     </div>
 <?php
   }
