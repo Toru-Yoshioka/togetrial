@@ -9,8 +9,7 @@
     <style type="text/css">
     <!--
     body {
-      background-color: #ffffff;
-      background-image: url('./img/bg_xmas_top.png');
+      background-color: #D4D9D3;
       background-position: center top;
       background-repeat: no-repeat;
       background-size: 100% auto;
@@ -35,20 +34,24 @@
       width:100%;
       height:100%;
 
-      background-color:#D4D9D3;
-      opacity: 1.0;
-      display: none;
+      background-color:#ffffff;
+      opacity: 0.0;
+      display: block;
       z-index:1;
     }
     //-->
     </style>
   </head>
   <body>
-    <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div id="fadeLayer"></div>
     <script type="text/javascript">
     <!--
-    $("#fadeLayer").fadeIn("slow");
+    $("#fadeLayer").fadeOut("slow");
+    $(function(){
+      setTimeout(function(){
+        // window.location.href = './lottery.php';
+      },3000);
+    });
     //-->
     </script>
   </body>
