@@ -1,7 +1,45 @@
 <?php
-  $unique_key = md5(uniqid());
-  $lot_result = mt_rand(0, 99);
-  $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
+$unique_key = md5(uniqid());
+$lot_rand = mt_rand(0, 99);
+$card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
+
+// 抽選結果
+if ($lot_rand >= 0 and $lot_rand <= 30) {
+  $lot_result = 1;
+} else {
+  $lot_result = 0;
+}
+// ヒストリ登録
+$conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
+$link = pg_connect($conn);
+if (!$link) {
+  die('接続失敗です。'.pg_last_error());
+}
+// 接続に成功
+$result = pg_query('
+INSERT INTO
+ lottery_history
+ (
+  lottery_seq,
+  unique_key,
+  drawing_timestamp,
+  drawing_result
+ ) VALUES (
+  nextval(lottery_seq),
+  ' . $unique_key . ',
+  current_timestamp,
+  ' . $lot_result . '
+ )
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+
+$close_flag = pg_close($link);
+
+if ($close_flag){
+//     print('切断に成功しました。<br>');
+}
 ?>
 <html>
   <head>
