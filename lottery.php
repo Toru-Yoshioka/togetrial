@@ -102,7 +102,8 @@ if ($close_flag){
     }
     .gift_info {
       position: absolute;
-      bottom: 80px;
+      bottom: 128px;
+      left: 64px;
       font-size: xx-large;
     }
     #fadeLayer {
@@ -128,7 +129,8 @@ if ($close_flag){
         <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
         <figcaption class="gift_info">
           <p>
-            ギフトコード: <?php print($gift_code); ?> (<?php print($packet_size); ?> MB)<br/>
+            ギフトコード:<br/><?php print($gift_code); ?><br/>
+            パケット容量: <?php print($packet_size); ?> MB<br/>
             有効期限: <?php print($limit_date); ?>
           </p>
         </figcaption>
