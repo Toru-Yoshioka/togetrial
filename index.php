@@ -1,11 +1,13 @@
 <?php
-$conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
-$link = pg_connect($conn);
-if (!$link) {
-    die('接続失敗です。'.pg_last_error());
-}
-// 接続に成功
-$setck = md5(uniqid());
+$ck = $_COOKIE['TSID'];
+if ($ck == '') {
+  $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
+  $link = pg_connect($conn);
+  if (!$link) {
+      die('接続失敗です。'.pg_last_error());
+  }
+  // 接続に成功
+  $setck = md5(uniqid());
 
 $result = pg_query('
 select
@@ -29,36 +31,26 @@ WHERE
   AND
   lh1.drawing_timestamp < current_timestamp - interval \'3 minutes\'
 ');
-if (!$result) {
+
+  if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
-} else {
-  $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-  $recno = $rows['count'];
-  if ($recno > 0) {
-    $lottery_enable = true;
-    $debug_mes = '３分経ちました';
   } else {
-    $lottery_enable = false;
-    $debug_mes = 'まだ３分経っていません';
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $recno = $rows['count'];
+    if ($recno > 0) {
+      $lottery_enable = true;
+      $debug_mes = '３分経ちました';
+    } else {
+      $lottery_enable = false;
+      $debug_mes = 'まだ３分経っていません';
+    }
   }
-//  for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
-//      $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-//      print('CODE:<br/>');
-//      print($rows['code']);
-//      print('<br/>');
-//      print('CREATED:<br/>');
-//      print($rows['createddate']);
-//      print('<br/>');
-//      print('PUBLISHED:<br/>');
-//      print($rows['published']);
-//      print('<br/>');
-//  }
-}
 
-$close_flag = pg_close($link);
+  $close_flag = pg_close($link);
 
-if ($close_flag){
-//     print('切断に成功しました。<br>');
+  if ($close_flag){
+  //     print('切断に成功しました。<br>');
+  }
 }
 ?>
 <html>
@@ -118,7 +110,7 @@ if ($close_flag){
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <h3><?php print($rows['count']); ?></h3>
 <?php
-  if ($lottery_enable) {
+  if ($lottery_enable && $ck == '') {
 ?>
     <h3><?php print($debug_mes); ?></h3>
     <div class="gift_box_area">

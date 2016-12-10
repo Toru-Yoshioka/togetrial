@@ -1,5 +1,12 @@
 <?php
-$unique_key = md5(uniqid());
+$ck = $_COOKIE['TSID'];
+if ($ck == '') {
+  $unique_key = md5(uniqid());
+  setcookie('TSID', $unique_key, time()+30);
+} else {
+  header('Location: /');
+  exit;
+}
 $lot_rand = mt_rand(0, 99);
 $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
 
