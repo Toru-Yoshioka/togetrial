@@ -151,7 +151,7 @@ if ($close_flag){
       <h2>有効期限: <?php print($limit_date); ?></h2>
       <br/>
       <h1>おめでとう！</h1>
-      <h1><a href="https://my.mineo.jp/">mineo マイページ</a> から受け取ってネ♪</h1>
+      <h1><a target="_blank" href="https://my.mineo.jp/">mineo マイページ</a> から受け取ってネ♪</h1>
       <br/>
       <h1><a href="/">サンタの部屋にもどる</a></h1>
     </div>
