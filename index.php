@@ -130,6 +130,10 @@ if ($close_flag){
   } else {
 ?>
     <h3><?php print($debug_mes); ?></h3>
+    <div class="gift_box_area">
+      <img src="./img/santa.png"/>
+      <h4>プレゼントを準備中のようです...</h4>
+    </div>
 <?php
   }
 ?>
