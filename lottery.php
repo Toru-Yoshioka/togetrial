@@ -1,6 +1,7 @@
 <?php
   $unique_key = md5(uniqid());
   $lot_result = mt_rand(0, 99);
+  $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
 ?>
 <html>
   <head>
@@ -18,7 +19,7 @@
     }
     .xmas_logo {
       text-align: center;
-      margin-top: 64px;
+      margin-top: 16px;
     }
     .gift_box_area {
       text-align: center;
@@ -42,6 +43,9 @@
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
+    <div class="gift_box_area">
+      <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
+    </div>
     <div id="fadeLayer"></div>
     <script type="text/javascript">
     <!--
