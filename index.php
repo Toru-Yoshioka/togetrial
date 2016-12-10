@@ -34,8 +34,10 @@ if (!$result) {
 } else {
   $recno = pg_num_rows($result);
   if ($recno > 0) {
+    $lottery_enable = true;
     $debug_mes = '３分経ちました';
   } else {
+    $lottery_enable = false;
     $debug_mes = 'まだ３分経っていません';
   }
 //  for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
@@ -113,19 +115,22 @@ if ($close_flag){
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
+<?php
+  if ($lottery_enable) {
+?>
     <div class="gift_box_area">
       <a href="javascript:fade();">
         <img src="./img/giftbox_off.png"/>
       </a>
-      <a href="javascript:fade();">
-        <img src="./img/giftbox_off.png"/>
-      </a>
-      <a href="javascript:fade();">
-        <img src="./img/giftbox_off.png"/>
-      </a>
     </div>
-    <div id="fadeLayer"></div>
+<?php
+  } else {
+?>
     <h3><?php print($debug_mes); ?></h3>
+<?php
+  }
+?>
+    <div id="fadeLayer"></div>
     <p>
     </p>
   </body>
