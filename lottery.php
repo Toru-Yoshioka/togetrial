@@ -1,22 +1,22 @@
 <?php
 $ck = $_COOKIE['TSID'];
 $rf = $_SERVER['HTTP_REFERER'];
-if ($ck == '' and $rf == 'https://togetrial.herokuapp.com/') {
+// if ($ck == '' and $rf == 'https://togetrial.herokuapp.com/') {
   $unique_key = md5(uniqid());
   setcookie('TSID', $unique_key, time()+30);
-} else {
-  header('Location: /');
-  exit;
-}
+// } else {
+//   header('Location: /');
+//   exit;
+// }
 $lot_rand = mt_rand(0, 99);
 $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
 
 // 抽選結果
-if ($lot_rand >= 0 and $lot_rand <= 30) {
+// if ($lot_rand >= 0 and $lot_rand <= 30) {
   $lot_result = 1;
-} else {
-  $lot_result = 0;
-}
+// } else {
+//  $lot_result = 0;
+// }
 // ヒストリ登録
 $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
 $link = pg_connect($conn);
@@ -124,7 +124,7 @@ if ($close_flag){
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
-      <figure>
+      <figure style="position: relative;">
         <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
         <figcaption class="gift_info">
           <p>
