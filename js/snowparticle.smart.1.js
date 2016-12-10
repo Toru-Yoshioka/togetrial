@@ -1,14 +1,5 @@
 /* snowparticle.smart.1.js */
 (function(d,b,w){
-	/* 直リン対策用 自サーバーアップロードしてお使いいただける場合は3〜11行目まで削除してお使いください。 */
-	if(!location.href.match(/^http:\/\/actyway\.com\//)){
-		var j = d.getElementsByTagName('script');
-		for(var x=0;x<j.length;x++){
-			if(j[x].src.match(/^http:\/\/actyway\.com\//)){
-				return false;
-			}
-		}
-	}
 	var q = d.createElement('div');
 	q.id = 'snowparticle';
 	b.appendChild(q);
