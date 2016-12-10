@@ -1,7 +1,7 @@
 <?php
 $ck = $_COOKIE['TSID'];
 $rf = $_SERVER['HTTP_REFERER'];
-if ($ck == '') {
+if ($ck == '' and $rf == 'https://togetrial.herokuapp.com/') {
   $unique_key = md5(uniqid());
   setcookie('TSID', $unique_key, time()+30);
 } else {
@@ -101,7 +101,7 @@ if ($close_flag){
 ?>
     <div class="gift_box_area" style="margin-top: 10%;">
       <img src="./img/giftbox_empty.png"/>
-      <h2><?php print($rf); ?> あれ･･･？ 空箱だったみたい(^_^;</h2>
+      <h2>あれ･･･？ 空箱だったみたい(^_^;</h2>
       <h2>サンタさんがすぐに次のプレゼントを用意してるみたいだよ。</h2>
       <h2><a href="/">もう１度チャレンジする</a></h2>
     </div>

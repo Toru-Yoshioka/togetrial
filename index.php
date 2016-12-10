@@ -108,21 +108,18 @@ WHERE
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
-    <h3><?php print($rows['count']); ?></h3>
 <?php
   if ($lottery_enable && $ck == '') {
 ?>
-    <h3><?php print($debug_mes); ?></h3>
     <div class="gift_box_area">
       <a href="javascript:fade();">
         <img src="./img/giftbox_off.png"/>
-        <h2>ギフトボックスをタップしてネ♪</h2>
       </a>
+      <h2>ギフトボックスをタップしてネ♪</h2>
     </div>
 <?php
   } else {
 ?>
-    <h3><?php print($debug_mes); ?></h3>
     <div class="gift_box_area">
       <img src="./img/santa.png"/>
       <h2>次のプレゼントを準備しているようです...</h2>
