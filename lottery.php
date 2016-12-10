@@ -138,7 +138,7 @@ if ($close_flag){
     <div class="gift_box_area" style="margin-top: 10%;">
       <img src="./img/giftbox_empty.png"/>
       <h1>あれ･･･？ 空箱だったみたい(^_^;</h1>
-      <h1>サンタさんがすぐに次のプレゼントを用意してるみたいだよ。</h1>
+      <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
       <h1><a href="/">もう１度チャレンジする</a></h1>
     </div>
 <?php
