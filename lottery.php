@@ -102,7 +102,7 @@ if ($close_flag){
     }
     .gift_info {
       position: absolute;
-      bottom: 80px;
+      bottom: 128px;
       left: 35%;
       font-size: 48pt;
       background: rgba(0,0,0,.6);
