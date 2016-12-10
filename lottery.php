@@ -104,8 +104,11 @@ if ($close_flag){
       position: absolute;
       bottom: 50px;
       left: 35%;
+    }
+    .gift_info p {
       background: rgba(0,0,0,.6);
       font-size: 40pt;
+      color: #ffffff;
     }
     #fadeLayer {
       position:absolute;
@@ -129,9 +132,7 @@ if ($close_flag){
       <figure style="position: relative;">
         <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
         <figcaption class="gift_info">
-          <p>
-            ギフトコード<br/><?php print($gift_code); ?>
-          </p>
+          ギフトコード<br/><p><?php print($gift_code); ?></p>
         </figcaption>
       </figure>
       <h2>パケット容量: <?php print($packet_size); ?> MB</h2>
