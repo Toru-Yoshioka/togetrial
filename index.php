@@ -118,6 +118,7 @@ if ($close_flag){
 <?php
   if ($lottery_enable) {
 ?>
+    <h3><?php print($debug_mes); ?></h3>
     <div class="gift_box_area">
       <a href="javascript:fade();">
         <img src="./img/giftbox_off.png"/>
