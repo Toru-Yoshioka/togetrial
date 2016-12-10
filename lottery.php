@@ -6,6 +6,7 @@
   <head>
     <title>Togekichi presents Xmas Gift</title>
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/snowstorm-min.js"></script>
     <style type="text/css">
     <!--
     body {
@@ -40,6 +41,7 @@
     </style>
   </head>
   <body>
+    <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div id="fadeLayer"></div>
     <script type="text/javascript">
     <!--
