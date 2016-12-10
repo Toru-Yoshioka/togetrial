@@ -26,7 +26,7 @@ INSERT INTO
   drawing_result
  ) VALUES (
   nextval(\'lottery_seq\'),
-  ' . $unique_key . ',
+  \'' . $unique_key . '\',
   current_timestamp,
   ' . $lot_result . '
  )
