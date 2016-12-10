@@ -1,7 +1,6 @@
 <?php
   $unique_key = md5(uniqid());
   $lot_result = mt_rand(0, 99);
-}
 ?>
 <html>
   <head>
