@@ -35,9 +35,6 @@
       height:100%;
 
       background-color:#ffffff;
-      opacity: 0.0;
-      display: block;
-      z-index:1;
     }
     //-->
     </style>
