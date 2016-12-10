@@ -9,7 +9,7 @@
     <style type="text/css">
     <!--
     body {
-      background-color: #D4D9D3;
+      background-color: #ffffff;
       background-image: url('./img/bg_xmas_top.png');
       background-position: center top;
       background-repeat: no-repeat;
@@ -35,21 +35,21 @@
       width:100%;
       height:100%;
 
-      background-color:#ffffff;
+      background-color:#D4D9D3;
       opacity: 1.0;
-      display: block;
+      display: none;
       z-index:1;
     }
     //-->
     </style>
-    <script type="text/javascript">
-    <!--
-    $("#fadeLayer").fadeOut("slow");
-    //-->
-    </script>
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div id="fadeLayer"></div>
+    <script type="text/javascript">
+    <!--
+    $("#fadeLayer").fadeIn("slow");
+    //-->
+    </script>
   </body>
 </html>
