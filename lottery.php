@@ -7,7 +7,7 @@
   <head>
     <title>Togekichi presents Xmas Gift</title>
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="./js/snowstorm-min.js"></script>
+    <script type="text/javascript" src="./js/snowparticle.smart.1.js"></script>
     <style type="text/css">
     <!--
     body {
