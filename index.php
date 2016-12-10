@@ -116,6 +116,7 @@ WHERE
     <div class="gift_box_area">
       <a href="javascript:fade();">
         <img src="./img/giftbox_off.png"/>
+        <h2>ギフトボックスをタップしてネ♪</h2>
       </a>
     </div>
 <?php
