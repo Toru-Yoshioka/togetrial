@@ -33,7 +33,7 @@ if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
 } else {
   $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-  $recno = $rows[0];
+  $recno = $rows['count'];
   if ($recno > 0) {
     $lottery_enable = true;
     $debug_mes = '３分経ちました';
@@ -116,6 +116,7 @@ if ($close_flag){
   </head>
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
+    <h3><?php print($rows['count']); ?></h3>
 <?php
   if ($lottery_enable) {
 ?>
