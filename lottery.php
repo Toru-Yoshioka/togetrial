@@ -74,7 +74,8 @@ LIMIT 1
 UPDATE
  togepgift
 SET
- published_timestamp = current_timestamp
+ published_timestamp = current_timestamp,
+ unique_key = \'' . $unique_key . '\'
 WHERE
  code = \'' . $gift_code . '\'
   ');
