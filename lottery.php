@@ -101,8 +101,8 @@ if ($close_flag){
       padding-right: 2%;
     }
     .gift_info {
-      position: relative;
-      top: - 300px;
+      position: absolute;
+      bottom: 300px;
       font-size: x-larger;
     }
     #fadeLayer {
@@ -124,11 +124,15 @@ if ($close_flag){
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
-      <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
-      <div class="gift_info">
-        ギフトコード: <?php print($gift_code); ?> (<?php print($packet_size); ?> MB)<br/>
-        有効期限: <?php print($limit_date); ?>
-      </div>
+      <figure>
+        <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
+        <figcaption class="gift_info">
+          <p>
+            ギフトコード: <?php print($gift_code); ?> (<?php print($packet_size); ?> MB)<br/>
+            有効期限: <?php print($limit_date); ?>
+          </p>
+        </figcaption>
+      </figure>
       <h1>おめでとう！</h1>
       <h1><a href="https://my.mineo.jp/">mineo マイページ</a> から受け取ってネ♪</h1>
     </div>
