@@ -102,7 +102,8 @@ if ($close_flag){
     }
     .gift_info {
       position: absolute;
-      text-align: center;
+      bottom: 92px;
+      left: 144px;
       font-size: 40pt;
     }
     #fadeLayer {
