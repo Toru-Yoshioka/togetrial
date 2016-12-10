@@ -30,6 +30,15 @@ WHERE
   lh1.lottery_seq = lh3.lottery_seq
   AND
   lh1.drawing_timestamp < current_timestamp - interval \'3 minutes\'
+  AND
+   EXISTS (
+    select
+     *
+    FROM
+     togepgift
+    WHERE
+     created_date >= current_date - interval \'2 days\'
+   )
 ');
 
   if (!$result) {

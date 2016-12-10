@@ -43,6 +43,29 @@ if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
 }
 
+// 当選時
+if ($lot_result > 0) {
+$result = pg_query('
+SELECT
+ code,
+ created_date + interval \'2 days 23 hours 59 minutes 59 seconds\' AS limit_date
+FROM
+ togepgift
+WHERE
+ created_date >= current_date - interval \'2days\'
+ORDER BY
+ created_date DESC
+LIMIT 1
+');
+  if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+  } else {
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $gift_code = $rows['code'];
+    $limit_date = $rows['limit_date'];
+  }
+}
+
 $close_flag = pg_close($link);
 
 if ($close_flag){
@@ -93,6 +116,10 @@ if ($close_flag){
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
       <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
+      <div class="">
+        ギフトコード: <?php print($gift_code); ?><br/>
+        有効期限: <?php print($limit_date); ?>
+      </div>
       <h2>おめでとう！</h2>
       <h2><a href="https://my.mineo.jp/">mineo マイページ</a> から受け取ってネ♪</h2>
     </div>
