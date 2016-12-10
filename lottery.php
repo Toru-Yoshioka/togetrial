@@ -1,22 +1,22 @@
 <?php
 $ck = $_COOKIE['TSID'];
 $rf = $_SERVER['HTTP_REFERER'];
-// if ($ck == '' and $rf == 'https://togetrial.herokuapp.com/') {
+if ($ck == '' and $rf == 'https://togetrial.herokuapp.com/') {
   $unique_key = md5(uniqid());
   setcookie('TSID', $unique_key, time()+30);
-// } else {
-//   header('Location: /');
-//   exit;
-// }
+} else {
+  header('Location: /');
+  exit;
+}
 $lot_rand = mt_rand(0, 99);
 $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
 
 // 抽選結果
-// if ($lot_rand >= 0 and $lot_rand <= 30) {
+if ($lot_rand >= 0 and $lot_rand <= 30) {
   $lot_result = 1;
-// } else {
-//  $lot_result = 0;
-// }
+} else {
+ $lot_result = 0;
+}
 // ヒストリ登録
 $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
 $link = pg_connect($conn);
@@ -45,6 +45,7 @@ if (!$result) {
 
 // 当選時
 if ($lot_result > 0) {
+// ギフト情報取得
   $result = pg_query('
 SELECT
  code,
@@ -67,6 +68,18 @@ LIMIT 1
     $gift_code = $rows['code'];
     $packet_size = $rows['packet_size'];
     $limit_date = $rows['limit_date'];
+  }
+// 発行済み処理
+  $result = pg_query('
+UPDATE
+ togepgift
+SET
+ published_timestamp = current_timestamp
+WHERE
+ code = \'' . $gift_code . '\'
+  ');
+  if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
   }
 }
 
