@@ -102,7 +102,11 @@ if ($close_flag){
     <!--
     function fade() {
       $("#fadeLayer").fadeIn("slow");
-      alert('OK');
+      $(function(){
+        setTimeout(function(){
+          window.location.href = './lottery.php';
+        },3000);
+      });
     }
     //-->
     </script>
