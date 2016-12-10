@@ -55,6 +55,7 @@ if ($ck == '') {
     function fade() {
       $("#fadeLayer").fadeIn("slow");
     }
+    
     //-->
     </script>
   </head>

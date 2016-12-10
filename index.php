@@ -1,3 +1,63 @@
+<?php
+$conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
+$link = pg_connect($conn);
+if (!$link) {
+    die('接続失敗です。'.pg_last_error());
+}
+// 接続に成功
+$setck = md5(uniqid());
+
+$result = pg_query('
+select
+ count(lh1.*)
+FROM
+ lottery_history lh1,
+ (
+  select
+   lottery_seq,
+   drawing_timestamp
+  FROM
+   lottery_history lh2
+  WHERE
+   lh2.drawing_result = 1
+  ORDER BY
+   lh2.drawing_timestamp DESC
+  LIMIT 1
+ ) lh3
+WHERE
+  lh1.lottery_seq = lh3.lottery_seq
+  AND
+  lh1.drawing_timestamp < current_timestamp - interval '3 minutes'
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+} else {
+  $recno = pg_num_rows($result);
+  if ($recno > 0) {
+    $debug_mes = '３分経ちました';
+  } else {
+    $debug_mes = 'まだ３分経っていません';
+  }
+//  for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
+//      $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+//      print('CODE:<br/>');
+//      print($rows['code']);
+//      print('<br/>');
+//      print('CREATED:<br/>');
+//      print($rows['createddate']);
+//      print('<br/>');
+//      print('PUBLISHED:<br/>');
+//      print($rows['published']);
+//      print('<br/>');
+//  }
+}
+
+$close_flag = pg_close($link);
+
+if ($close_flag){
+    print('切断に成功しました。<br>');
+}
+?>
 <html>
   <head>
     <title>Togekichi presents Xmas Advent Gift</title>
@@ -59,41 +119,8 @@
       </a>
     </div>
     <div id="fadeLayer"></div>
-    <h3>postgreSQL query result</h3>
+    <h3><?php print($debug_mes); ?></h3>
     <p>
-<?php
-$conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
-$link = pg_connect($conn);
-if (!$link) {
-    die('接続失敗です。'.pg_last_error());
-}
-
-print('接続に成功しました。<br>');
-
-$result = pg_query('SELECT * FROM togepgift');
-if (!$result) {
-    die('クエリーが失敗しました。'.pg_last_error());
-} else {
-  for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
-      $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-//      print('CODE:<br/>');
-//      print($rows['code']);
-//      print('<br/>');
-//      print('CREATED:<br/>');
-//      print($rows['createddate']);
-//      print('<br/>');
-//      print('PUBLISHED:<br/>');
-//      print($rows['published']);
-//      print('<br/>');
-  }
-}
-
-$close_flag = pg_close($link);
-
-if ($close_flag){
-    print('切断に成功しました。<br>');
-}
-?>
     </p>
   </body>
 </html>
