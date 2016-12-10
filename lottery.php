@@ -45,23 +45,27 @@ if (!$result) {
 
 // 当選時
 if ($lot_result > 0) {
-$result = pg_query('
+  $result = pg_query('
 SELECT
  code,
+ packet_size,
  created_date + interval \'2 days 23 hours 59 minutes 59 seconds\' AS limit_date
 FROM
  togepgift
 WHERE
  created_date >= current_date - interval \'2days\'
+ AND
+ published_timestamp IS NULL
 ORDER BY
  created_date DESC
 LIMIT 1
-');
+  ');
   if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
   } else {
     $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
     $gift_code = $rows['code'];
+    $packet_size = $rows['packet_size'];
     $limit_date = $rows['limit_date'];
   }
 }
@@ -96,6 +100,11 @@ if ($close_flag){
       padding-left: 2%;
       padding-right: 2%;
     }
+    .gift_info {
+      position: relative;
+      top: - 300px;
+      font-size: x-larger;
+    }
     #fadeLayer {
       position:absolute;
       top:0px;
@@ -116,8 +125,8 @@ if ($close_flag){
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
       <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
-      <div class="">
-        ギフトコード: <?php print($gift_code); ?><br/>
+      <div class="gift_info">
+        ギフトコード: <?php print($gift_code); ?> (<?php print($packet_size); ?> MB)<br/>
         有効期限: <?php print($limit_date); ?>
       </div>
       <h1>おめでとう！</h1>
