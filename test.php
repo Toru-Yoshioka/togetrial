@@ -57,14 +57,18 @@
     ■RANDOM[<?php print($i); ?>]■</p>
     <p>▼
 <?php
-foreach($_SERVER as $key=>$value) {
-  if (substr($key,0,5)=="HTTP_") {
-    // $key=str_replace(" ","-",ucwords(strtolower(str_replace("_"," ",substr($key,5)))));
-    print ('KEY:'. $key . '<br/>');
-    // $out[$key]=$value;
-    print ('VALUE:'. $value . '<br/>');
-  }
-}
+$x_forwarded_for = $_SERVER['HTTP_X_FORWARDED_FOR'];
+print ($x_forwarded_for . '<br/>');
+$remote_host = gethostbyaddr($x_forwarded_for);
+print ($remote_host . '<br/>');
+//foreach($_SERVER as $key=>$value) {
+//  if (substr($key,0,5)=="HTTP_") {
+//    // $key=str_replace(" ","-",ucwords(strtolower(str_replace("_"," ",substr($key,5)))));
+//    print ('KEY:'. $key . '<br/>');
+//    // $out[$key]=$value;
+//    print ('VALUE:'. $value . '<br/>');
+//  }
+//}
 ?>
     ▲</p>
     <div id="fadeLayer"></div>
