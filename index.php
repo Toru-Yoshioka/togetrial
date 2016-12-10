@@ -27,7 +27,7 @@ FROM
 WHERE
   lh1.lottery_seq = lh3.lottery_seq
   AND
-  lh1.drawing_timestamp < current_timestamp - interval '3 minutes'
+  lh1.drawing_timestamp < current_timestamp - interval \'3 minutes\'
 ');
 if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
