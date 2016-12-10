@@ -105,9 +105,6 @@ if ($close_flag){
       bottom: 50px;
       left: 35%;
       font-size: 40pt;
-    }
-    .gift_info p {
-      width: 25%;
       background: rgba(0,0,0,.6);
       color: #ffffff;
     }
@@ -130,10 +127,11 @@ if ($close_flag){
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
+      <h1>ギフトコード</h1>
       <figure style="position: relative;">
         <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
         <figcaption class="gift_info">
-          ギフトコード<br/><p><?php print($gift_code); ?></p>
+          <?php print($gift_code); ?>
         </figcaption>
       </figure>
       <h2>パケット容量: <?php print($packet_size); ?> MB</h2>
