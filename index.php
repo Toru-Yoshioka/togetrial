@@ -124,7 +124,7 @@ WHERE
     <h3><?php print($debug_mes); ?></h3>
     <div class="gift_box_area">
       <img src="./img/santa.png"/>
-      <h2>プレゼントを準備中のようです...</h2>
+      <h2>次のプレゼントを準備しているようです...</h2>
     </div>
 <?php
   }

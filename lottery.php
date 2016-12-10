@@ -86,10 +86,27 @@ if ($close_flag){
     </style>
   </head>
   <body>
+<?php
+  if ($lot_result > 0) {
+?>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
       <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
+      <h2>おめでとう！</h2>
+      <h2><a href="#">mineo マイページ</a> から受け取ってネ♪</h2>
     </div>
+<?php
+  } else {
+?>
+    <div class="gift_box_area">
+      <img src="./img/giftbox_empty.png"/>
+      <h2>あれ･･･？ 空箱だったみたい(^_^;</h2>
+      <h2>サンタさんがすぐに次のプレゼントを用意してるみたいだよ。</h2>
+      <h3><a href="/">もう１度チャレンジする</a></h3>
+    </div>
+<?php
+  }
+?>
     <div id="fadeLayer"></div>
     <script type="text/javascript">
     <!--
