@@ -139,6 +139,8 @@ if ($close_flag){
       <br/>
       <h1>おめでとう！</h1>
       <h1><a href="https://my.mineo.jp/">mineo マイページ</a> から受け取ってネ♪</h1>
+      <br/>
+      <h1><a href="/">サンタの部屋にもどる</a></h1>
     </div>
 <?php
   } else {
