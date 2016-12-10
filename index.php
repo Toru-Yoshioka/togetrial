@@ -55,7 +55,7 @@ if (!$result) {
 $close_flag = pg_close($link);
 
 if ($close_flag){
-    print('切断に成功しました。<br>');
+//     print('切断に成功しました。<br>');
 }
 ?>
 <html>
@@ -70,6 +70,7 @@ if ($close_flag){
       background-position: center top;
       background-repeat: no-repeat;
       background-size: 100% auto;
+      color: #ffffff;
     }
     .xmas_logo {
       text-align: center;
@@ -101,6 +102,7 @@ if ($close_flag){
     <!--
     function fade() {
       $("#fadeLayer").fadeIn("slow");
+      alert('OK');
     }
     //-->
     </script>
