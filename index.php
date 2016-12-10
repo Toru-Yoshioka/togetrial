@@ -9,7 +9,7 @@ $setck = md5(uniqid());
 
 $result = pg_query('
 select
- count(lh1.*) AS RESULT_CNT
+ count(lh1.*)
 FROM
  lottery_history lh1,
  (
@@ -33,7 +33,7 @@ if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
 } else {
   $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-  $recno = $rows['RESULT_CNT'];
+  $recno = $rows[0];
   if ($recno > 0) {
     $lottery_enable = true;
     $debug_mes = '３分経ちました';
