@@ -38,6 +38,8 @@ WHERE
      togepgift
     WHERE
      created_date >= current_date - interval \'2 days\'
+     AND
+     published_timestamp IS NULL
    )
 ');
 
