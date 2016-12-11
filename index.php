@@ -90,9 +90,9 @@ WHERE
 //      $debug_mes = 'まだ３分経っていません';
     }
   }
-} else {
+}
 // 残箱確認
-  $result = pg_query('
+$result = pg_query('
 SELECT
  count(*)
 FROM
@@ -102,13 +102,12 @@ WHERE
  AND
  published_timestamp IS NULL
   ');
-  $last_cnt = 0;
-  if (!$result) {
-    die('クエリーが失敗しました。'.pg_last_error());
-  } else {
-    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-    $last_cnt = $rows['count'];
-  }
+$last_cnt = 0;
+if (!$result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+} else {
+  $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+  $last_cnt = $rows['count'];
 }
 
 $close_flag = pg_close($link);
