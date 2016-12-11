@@ -145,7 +145,7 @@ WHERE
   if ($last_cnt <= 0) {
 ?>
     <div class="gift_box_area">
-      <h1><?php print($rows['count']); ?>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
+      <h1><?php print($last_cnt); ?>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
     </div>
 <?php
   } elseif ($lottery_enable && $ck == '') {
