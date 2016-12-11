@@ -3,15 +3,15 @@ session_start();
 if (isset($_GET['mode'])) {
   unset($_SESSION['logedin']);
 } else {
+  $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
+  $link = pg_connect($conn);
+  if (!$link) {
+    die('接続失敗です。'.pg_last_error());
+  }
+  // 接続に成功
   if (isset($_SESSION['logedin'])) {
     if (isset($_POST['packet_size']) and isset($_POST['gift_code']) and isset($_POST['created_date'])) {
       // パケギフ登録
-      $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
-      $link = pg_connect($conn);
-      if (!$link) {
-        die('接続失敗です。'.pg_last_error());
-      }
-      // 接続に成功
       $result = pg_query('
 INSERT INTO
  togepgift
@@ -36,18 +36,36 @@ INSERT INTO
       } else {
         $insert_result = 'パケットギフトを登録しました。[' . $_POST['gift_code'] . ']';
       }
-      $close_flag = pg_close($link);
+    }
+    if (isset($_POST['filter_host']) and isset($_POST['filter_agent'])) {
+      // フィルター登録
+      $result = pg_query('
+INSERT INTO
+ user_filter
+ (
+  remote_host,
+  user_agent
+ ) VALUES (
+  \'' . $_POST['filter_host'] . '\',
+  \'' . $_POST['filter_agent'] . '\'
+ )
+');
+      if (!$result) {
+        die('クエリーが失敗しました。'.pg_last_error());
+      } else {
+        $insert_result = 'フィルタを登録しました。[' . $_POST['remote_host'] . '][' . $_POST['user_agent'] . ']';
+      }
+    }
+  }
+  if(isset($_POST['loginkey'])){
+    if ($_POST['loginkey'] == 'togesmasmainte') {
+      $_SESSION['logedin'] = 'mainte';
+    }
+  }
+  $close_flag = pg_close($link);
 
-      if ($close_flag){
+  if ($close_flag){
 //     print('切断に成功しました。<br>');
-      }
-    }
-  } else {
-    if(isset($_POST['loginkey'])){
-      if ($_POST['loginkey'] == 'togesmasmainte') {
-        $_SESSION['logedin'] = 'mainte';
-      }
-    }
   }
 }
 ?>
@@ -121,6 +139,10 @@ INSERT INTO
         <h2>ギフトコード</h2> <input type="text" style="height: 64px; width: 240px; font-size: x-large;" name="gift_code"/><br/>
         <br/>
         <h2>ギフト作成日</h2> <input type="text" style="height: 64px; width: 240px; font-size: x-large;" name="created_date" value="<?php print($now_date); ?>"/><br/>
+        <br/>
+        <h2>フィルタ(H)</h2> <input type="text" style="height: 64px; width: 240px; font-size: x-large;" name="filter_host"/><br/>
+        <br/>
+        <h2>フィルタ(A)</h2> <input type="text" style="height: 64px; width: 240px; font-size: x-large;" name="filter_agent"/><br/>
         <br/>
         <input type="submit" style="width: 320px; height: 80px; font-size: x-large;" value="登録"/>
         <br/>
