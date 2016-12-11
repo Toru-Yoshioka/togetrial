@@ -1,14 +1,14 @@
 <?php
+$conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
+$link = pg_connect($conn);
+if (!$link) {
+  die('接続失敗です。'.pg_last_error());
+}
+// 接続に成功
+$setck = md5(uniqid());
+
 $ck = $_COOKIE['TSID'];
 if ($ck == '') {
-  $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
-  $link = pg_connect($conn);
-  if (!$link) {
-      die('接続失敗です。'.pg_last_error());
-  }
-  // 接続に成功
-  $setck = md5(uniqid());
-
 $result = pg_query('
 select
  count(lh1.*)
