@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (isset($_GET['mode'])) {
+  unset($_SESSION['logedin']);
+} else {
+  if (! isset($_SESSION['logedin'])) {
+    if(isset($_POST['loginkey'])){
+      if ($_POST['loginkey'] == 'togesmasmainte') {
+        $_SESSION['logedin'] = 'mainte';
+      }
+    }
+  }
+}
+?>
 <html>
   <head>
     <title>Togekichi presents Xmas Gift Maintenance</title>
@@ -45,23 +59,46 @@
   </head>
   <body>
 <?php
-//  if ($lot_result > 0) {
+  if (isset($_SESSION['logedin'])) {
+    $now_date = date('Y-m-d');
+?>
+    <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
+    <div class="gift_box_area">
+      <h1>パケット登録</h1>
+      <form method="post" action="./mainte.php">
+        パケット容量: <select name="packet_size">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50" selected="true">50</option>
+        <option value="60">60</option>
+        <option value="70">70</option>
+        <option value="80">80</option>
+        <option value="90">90</option>
+        <option value="100">100</option>
+        </select><br/>
+        <input type="text" style="height: 24px; width: 320px; font-size: x-large;" name="gift_code"/><br/>
+        <input type="text" style="height: 24px; width: 320px; font-size: x-large;" name="created_date" value="<?php print($now_date); ?>"/><br/>
+        <input type="submit" style="width: 320px; height: 240px;" value="登録"/>
+        <br/>
+        <br/>
+        <input type="button" style="width: 320px; height: 240px;" onClick="location.href='./mainte.php?mode=logout'" value="ログアウト"/>
+      </form>
+    </div>
+<?php
+  } else {
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
       <h1>ログイン</h1>
       <form method="post" action="./mainte.php">
-        <input type="text" name="loginkey"/><br/>
-        <input type="submit" value="ログイン"/>
+        <input type="password" style="height: 24px; width: 320px; font-size: x-large;" name="loginkey"/><br/>
+        <input type="submit" style="width: 320px; height: 240px;" value="ログイン"/>
       </form>
     </div>
 <?php
-//  } else {
-?>
-    <div class="gift_box_area">
-    </div>
-<?php
-//  }
+  }
 ?>
     <div id="fadeLayer"></div>
     <script type="text/javascript">
