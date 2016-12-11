@@ -180,7 +180,7 @@ if ($close_flag){
   if ($is_limit) {
 ?>
     <div class="gift_box_area">
-      <h1>また明日、遊びに来てネ♪</h1>
+      <h1><?php print($today_date); ?>また明日、遊びに来てネ♪</h1>
     </div>
 <?php
   } elseif ($lottery_enable && $ck == '') {
