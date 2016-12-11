@@ -29,7 +29,7 @@ FROM
 WHERE
   lh1.lottery_seq = lh3.lottery_seq
   AND
-  lh1.drawing_timestamp < current_timestamp - interval \'3 minutes\'
+  lh1.drawing_timestamp < current_timestamp - interval \'5 minutes\'
   AND
    EXISTS (
     select
@@ -50,11 +50,31 @@ WHERE
     $recno = $rows['count'];
     if ($recno > 0) {
       $lottery_enable = true;
-      $debug_mes = '３分経ちました';
+//      $debug_mes = '３分経ちました';
     } else {
       $lottery_enable = false;
-      $debug_mes = 'まだ３分経っていません';
+//      $debug_mes = 'まだ３分経っていません';
     }
+  }
+
+// 残箱確認
+  $result = pg_query('
+SELECT
+ COUNT(*) AS RESULT_CNT
+FROM
+ togepgift
+WHERE
+ created_date >= current_date - interval \'2days\'
+ AND
+ published_timestamp IS NULL
+ORDER BY
+ created_date DESC
+  ');
+  if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+  } else {
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $last_cnt = $rows['RESULT_CNT'];
   }
 
   $close_flag = pg_close($link);
@@ -102,6 +122,10 @@ WHERE
       display: none;
       z-index:1;
     }
+    a:link { color: #ffffff; }
+    a:visited { color: #ffffff; }
+    a:hover { color: #ffffff; }
+    a:active { color: #ffffff; }
     //-->
     </style>
     <script type="text/javascript">
@@ -120,7 +144,13 @@ WHERE
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
 <?php
-  if ($lottery_enable && $ck == '') {
+  if ($last_cnt <= 0) {
+?>
+    <div class="gift_box_area">
+      <h1>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
+    </div>
+<?php
+  } elseif ($lottery_enable && $ck == '') {
 ?>
     <div class="gift_box_area">
       <a href="javascript:fade();">
@@ -133,7 +163,7 @@ WHERE
 ?>
     <div class="gift_box_area">
       <img src="./img/santa.png"/>
-      <h1>次のプレゼントを用意してるみたいだよ...</h1>
+      <h1>次のプレゼントを用意してるみたいだよ...<br/><a href="/">もう準備できた？</a></h1>
     </div>
 <?php
   }
