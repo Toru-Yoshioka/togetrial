@@ -18,11 +18,17 @@ INSERT INTO
  (
   code,
   created_date,
-  packet_size
+  packet_size,
+  locked_timestamp,
+  published_timestamp,
+  unique_key
  ) VALUES (
   \'' . $gift_code . '\',
   \'' . $created_date . '\',
-  ' . $packet_size . '
+  ' . $packet_size . ',
+  null,
+  null,
+  null
  )
       ');
       if (!$result) {
