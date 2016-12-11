@@ -66,7 +66,7 @@ if (isset($_GET['mode'])) {
     <div class="gift_box_area">
       <h1>パケット登録</h1>
       <form method="post" action="./mainte.php">
-        パケット容量: <select name="packet_size">
+        <h2>パケット容量:</h2> <select style="font-size: x-large;" name="packet_size">
         <option value="10">10</option>
         <option value="20">20</option>
         <option value="30">30</option>
@@ -78,12 +78,15 @@ if (isset($_GET['mode'])) {
         <option value="90">90</option>
         <option value="100">100</option>
         </select><br/>
-        <input type="text" style="height: 24px; width: 320px; font-size: x-large;" name="gift_code"/><br/>
-        <input type="text" style="height: 24px; width: 320px; font-size: x-large;" name="created_date" value="<?php print($now_date); ?>"/><br/>
-        <input type="submit" style="width: 320px; height: 240px;" value="登録"/>
+        <br/>
+        <h2>ギフトコード</h2> <input type="text" style="height: 32px; width: 240px; font-size: x-large;" name="gift_code"/><br/>
+        <br/>
+        <h2>ギフト作成日</h2> <input type="text" style="height: 32px; width: 240px; font-size: x-large;" name="created_date" value="<?php print($now_date); ?>"/><br/>
+        <br/>
+        <input type="submit" style="width: 320px; height: 32px;" value="登録"/>
         <br/>
         <br/>
-        <input type="button" style="width: 320px; height: 240px;" onClick="location.href='./mainte.php?mode=logout'" value="ログアウト"/>
+        <input type="button" style="width: 320px; height: 32px; font-size: x-large;" onClick="location.href='./mainte.php?mode=logout'" value="ログアウト"/>
       </form>
     </div>
 <?php
@@ -93,8 +96,9 @@ if (isset($_GET['mode'])) {
     <div class="gift_box_area">
       <h1>ログイン</h1>
       <form method="post" action="./mainte.php">
-        <input type="password" style="height: 24px; width: 320px; font-size: x-large;" name="loginkey"/><br/>
-        <input type="submit" style="width: 320px; height: 240px;" value="ログイン"/>
+        <input type="password" style="height: 32px; width: 320px; font-size: x-large;" name="loginkey"/><br/>
+        <br/>
+        <input type="submit" style="width: 320px; height: 32px; font-size: x-large;" value="ログイン"/>
       </form>
     </div>
 <?php
