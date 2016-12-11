@@ -184,7 +184,7 @@ if ($close_flag){
       <h1>また明日、遊びに来てネ♪</h1>
     </div>
 <?php
-  if ($lottery_enable && $ck == '') {
+  } elseif ($lottery_enable && $ck == '') {
 ?>
     <div class="gift_box_area">
       <a href="javascript:fade();">
