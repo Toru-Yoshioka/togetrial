@@ -23,14 +23,14 @@ INSERT INTO
   published_timestamp,
   unique_key
  ) VALUES (
-  \'' . $gift_code . '\',
-  \'' . $created_date . '\',
-  ' . $packet_size . ',
+  \'' . $_POST['gift_code'] . '\',
+  \'' . $_POST['created_date'] . '\',
+  ' . $_POST['packet_size'] . ',
   null,
   null,
   null
  )
-      ');
+');
       if (!$result) {
         die('クエリーが失敗しました。'.pg_last_error());
       } else {
