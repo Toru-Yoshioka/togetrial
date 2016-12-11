@@ -60,22 +60,19 @@ WHERE
 // 残箱確認
   $result = pg_query('
 SELECT
- code
+ COUNT(*)
 FROM
  togepgift
 WHERE
  created_date >= current_date - interval \'2days\'
  AND
  published_timestamp IS NULL
-ORDER BY
- created_date DESC
-LIMIT 1
   ');
   if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
   } else {
-//    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-    $last_cnt = pg_num_rows($result);
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $last_cnt = $rows['count'];
   }
 
   $close_flag = pg_close($link);
