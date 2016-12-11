@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Tokyo');
 $ck = $_COOKIE['TSID'];
 $rf = $_SERVER['HTTP_REFERER'];
 if ($ck == '' and $rf == 'https://togetrial.herokuapp.com/') {

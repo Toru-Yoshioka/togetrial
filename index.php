@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Tokyo');
 $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
 $link = pg_connect($conn);
 if (!$link) {
@@ -180,7 +181,7 @@ if ($close_flag){
   if ($is_limit) {
 ?>
     <div class="gift_box_area">
-      <h1><?php print($today_date); ?>また明日、遊びに来てネ♪</h1>
+      <h1>また明日、遊びに来てネ♪</h1>
     </div>
 <?php
   } elseif ($lottery_enable && $ck == '') {
