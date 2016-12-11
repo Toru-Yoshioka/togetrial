@@ -74,8 +74,8 @@ LIMIT 1
   if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
   } else {
-    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-    $last_cnt = $rows[0];
+//    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $last_cnt = pg_num_rows($result);
   }
 
   $close_flag = pg_close($link);
@@ -145,7 +145,7 @@ LIMIT 1
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
 <?php
-  if ($last_cnt == '') {
+  if ($last_cnt <= 0) {
 ?>
     <div class="gift_box_area">
       <h1>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
