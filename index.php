@@ -60,7 +60,7 @@ WHERE
 // 残箱確認
   $result = pg_query('
 SELECT
- COUNT(*) AS RESULT_CNT
+ code
 FROM
  togepgift
 WHERE
@@ -75,7 +75,7 @@ LIMIT 1
     die('クエリーが失敗しました。'.pg_last_error());
   } else {
     $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-    $last_cnt = $rows['RESULT_CNT'];
+    $last_cnt = pg_num_rows($result);
   }
 
   $close_flag = pg_close($link);
