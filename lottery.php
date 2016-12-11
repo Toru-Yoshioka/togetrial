@@ -30,11 +30,9 @@ $result = pg_query('
 SELECT
  count(*)
 FROM
- user_filter
+ ip_filter
 WHERE
- remote_host = \'' . $remote_host . '\'
- AND
- user_agent = \'' . $remote_host . '\'
+ remote_ip = \'' . $x_forwarded_for . '\'
 ');
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
@@ -49,12 +47,6 @@ if ($filter_cnt > 0) {
   $lot_result = 1;
 } else {
  $lot_result = 0;
-}
-// 強制フィルタ
-if ($x_forwarded_for == '125.54.250.222' or
-    $x_forwarded_for == '125.201.185.122') {
-  $filter_sign = '.';
-  $lot_result = 0;
 }
 
 $result = pg_query('
