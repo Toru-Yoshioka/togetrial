@@ -22,11 +22,9 @@ if (!$link) {
   die('接続失敗です。'.pg_last_error());
 }
 
-// 抽選結果
-if ($lot_rand >= 0 and $lot_rand <= 4) {
-  // フィルタチェック
-  $filter_cnt = 0;
-  $result = pg_query('
+// フィルタチェック
+$filter_cnt = 0;
+$result = pg_query('
 SELECT
  count(*)
 FROM
@@ -35,19 +33,18 @@ WHERE
  remote_host = \'' . $remote_host . '\'
  AND
  user_agent = \'' . $remote_host . '\'
-  ');
-  if (!$result) {
-    die('クエリーが失敗しました。'.pg_last_error());
-  } else {
-    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-    $filter_cnt = $rows['count'];
-  }
-  if ($filter_cnt > 0) {
-    $filter_sign = '.';
-    $lot_result = 0;
-  } else {
-    $lot_result = 1;
-  }
+');
+if (!$result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+} else {
+  $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+  $filter_cnt = $rows['count'];
+}
+if ($filter_cnt > 0) {
+  $filter_sign = '.';
+  $lot_result = 0;
+} elseif ($lot_rand >= 0 and $lot_rand <= 4) {
+  $lot_result = 1;
 } else {
  $lot_result = 0;
 }
