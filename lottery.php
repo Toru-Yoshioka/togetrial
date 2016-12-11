@@ -43,6 +43,7 @@ WHERE
     $filter_cnt = $rows['count'];
   }
   if ($filter_cnt > 0) {
+    $filter_sign = '.';
     $lot_result = 0;
   } else {
     $lot_result = 1;
@@ -196,7 +197,7 @@ if ($close_flag){
       <img src="./img/giftbox_empty.png"/>
       <h1>あれ･･･？ 空箱だったみたい(^_^;</h1>
       <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
-      <h1><a href="/">もう１度チャレンジする</a></h1>
+      <h1><a href="/">もう１度チャレンジする<?php print($filter_sign); ?></a></h1>
     </div>
 <?php
   }
