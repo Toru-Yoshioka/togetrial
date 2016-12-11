@@ -143,19 +143,19 @@ WHERE
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
 <?php
-  if ($last_cnt == 0) {
-?>
-    <div class="gift_box_area">
-      <h1>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
-    </div>
-<?php
-  } elseif ($lottery_enable && $ck == '') {
+  if ($lottery_enable && $ck == '') {
 ?>
     <div class="gift_box_area">
       <a href="javascript:fade();">
         <img src="./img/giftbox_off.png"/>
       </a>
       <h1>ギフトボックスをタップしてネ♪</h1>
+    </div>
+<?php
+  } elseif ($last_cnt == 0) {
+?>
+    <div class="gift_box_area">
+      <h1>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
     </div>
 <?php
   } else {
