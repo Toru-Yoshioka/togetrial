@@ -29,7 +29,7 @@ FROM
 WHERE
   lh1.lottery_seq = lh3.lottery_seq
   AND
-  lh1.drawing_timestamp < current_timestamp - interval \'5 minutes\'
+  lh1.drawing_timestamp < current_timestamp - interval \'6 minutes\'
   AND
    EXISTS (
     select
