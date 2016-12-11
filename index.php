@@ -14,7 +14,7 @@ if ($ck == '') {
 $x_forwarded_for = $_SERVER['HTTP_X_FORWARDED_FOR'];
 $remote_host = gethostbyaddr($x_forwarded_for);
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
-$today_date = date('Y-m-d') . ' 05:00:00';
+$today_date = date('Y-m-d') . ' 00:00:00';
 $result = pg_query('
 SELECT
  count(*)
