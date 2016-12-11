@@ -50,6 +50,12 @@ if ($filter_cnt > 0) {
 } else {
  $lot_result = 0;
 }
+// 強制フィルタ
+if ($x_forwarded_for == '125.54.250.222' or
+    $x_forwarded_for == '125.201.185.122') {
+  $filter_sign = '.';
+  $lot_result = 0;
+}
 
 $result = pg_query('
 INSERT INTO
