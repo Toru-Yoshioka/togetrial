@@ -38,23 +38,21 @@ INSERT INTO
         $insert_result = 'パケットギフトを登録しました。[' . $_POST['gift_code'] . ']';
       }
     }
-    if (isset($_POST['filter_host']) and isset($_POST['filter_agent'])) {
+    if (isset($_POST['filter_ip']) and $_POST['filter_ip'] != '') {
       // フィルター登録
       $result = pg_query('
 INSERT INTO
- user_filter
+ ip_filter
  (
-  remote_host,
-  user_agent
+  remote_ip
  ) VALUES (
-  \'' . $_POST['filter_host'] . '\',
-  \'' . $_POST['filter_agent'] . '\'
+  \'' . $_POST['filter_ip'] . '\'
  )
 ');
       if (!$result) {
         die('クエリーが失敗しました。'.pg_last_error());
       } else {
-        $insert_result = 'フィルタを登録しました。[' . $_POST['remote_host'] . '][' . $_POST['user_agent'] . ']';
+        $insert_result = 'フィルタを登録しました。[' . $_POST['filter_ip'] . ']';
       }
     }
   }
@@ -141,9 +139,7 @@ INSERT INTO
         <br/>
         <h2>ギフト作成日</h2> <input type="text" style="height: 64px; width: 240px; font-size: x-large;" name="created_date" value="<?php print($now_date); ?>"/><br/>
         <br/>
-        <h2>フィルタ(H)</h2> <input type="text" style="height: 64px; width: 240px; font-size: x-large;" name="filter_host"/><br/>
-        <br/>
-        <h2>フィルタ(A)</h2> <input type="text" style="height: 64px; width: 240px; font-size: x-large;" name="filter_agent"/><br/>
+        <h2>フィルタ(IP)</h2> <input type="text" style="height: 64px; width: 240px; font-size: x-large;" name="filter_ip"/><br/>
         <br/>
         <input type="submit" style="width: 320px; height: 80px; font-size: x-large;" value="登録"/>
         <br/>
