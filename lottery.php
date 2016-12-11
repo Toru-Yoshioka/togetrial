@@ -41,7 +41,7 @@ if (!$result) {
   $filter_cnt = $rows['count'];
 }
 if ($filter_cnt > 0) {
-  $filter_sign = '.';
+  $filter_sign = '';
   $lot_result = 0;
 } elseif ($lot_rand >= 0 and $lot_rand <= 4) {
   $lot_result = 1;
