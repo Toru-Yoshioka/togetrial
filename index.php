@@ -69,6 +69,7 @@ WHERE
  published_timestamp IS NULL
 ORDER BY
  created_date DESC
+LIMIT 1
   ');
   if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
