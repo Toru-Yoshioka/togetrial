@@ -76,12 +76,13 @@ WHERE
     $last_cnt = $rows['count'];
   }
 }
-  $close_flag = pg_close($link);
 
-  if ($close_flag){
-  //     print('切断に成功しました。<br>');
-  }
+$close_flag = pg_close($link);
+
+if ($close_flag){
+//     print('切断に成功しました。<br>');
 }
+
 ?>
 <html>
   <head>
