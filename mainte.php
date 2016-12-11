@@ -34,7 +34,7 @@ INSERT INTO
       if (!$result) {
         die('クエリーが失敗しました。'.pg_last_error());
       } else {
-        $insert_result = 'パケットギフトを登録しました。[' . $gift_code . ']';
+        $insert_result = 'パケットギフトを登録しました。[' . $_POST['gift_code'] . ']';
       }
       $close_flag = pg_close($link);
 
@@ -122,7 +122,7 @@ INSERT INTO
         <br/>
         <h2>ギフト作成日</h2> <input type="text" style="height: 64px; width: 240px; font-size: x-large;" name="created_date" value="<?php print($now_date); ?>"/><br/>
         <br/>
-        <input type="submit" style="width: 320px; height: 80px;" value="登録"/>
+        <input type="submit" style="width: 320px; height: 80px; font-size: x-large;" value="登録"/>
         <br/>
         <br/>
         <h2><?php print($insert_result); ?></h2>
