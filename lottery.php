@@ -14,19 +14,42 @@ if ($ck == '' and $rf == 'https://togetrial.herokuapp.com/') {
 $lot_rand = mt_rand(0, 99);
 $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
 
-// 抽選結果
-if ($lot_rand >= 0 and $lot_rand <= 4) {
-  $lot_result = 1;
-} else {
- $lot_result = 0;
-}
 // ヒストリ登録
 $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
 $link = pg_connect($conn);
 if (!$link) {
   die('接続失敗です。'.pg_last_error());
 }
-// 接続に成功
+
+// 抽選結果
+if ($lot_rand >= 0 and $lot_rand <= 4) {
+  // フィルタチェック
+  $filter_cnt = 0;
+  $result = pg_query('
+SELECT
+ count(*)
+FROM
+ user_filter
+WHERE
+ remote_host = \'' . $remote_host . '\'
+ AND
+ user_agent = \'' . $remote_host . '\'
+  ');
+  if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+  } else {
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $filter_cnt = $rows['count'];
+  }
+  if ($filter_cnt > 0) {
+    $lot_result = 0;
+  } else {
+    $lot_result = 1;
+  }
+} else {
+ $lot_result = 0;
+}
+
 $result = pg_query('
 INSERT INTO
  lottery_history
