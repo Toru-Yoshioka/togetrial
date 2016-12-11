@@ -11,7 +11,7 @@ if (isset($_GET['mode'])) {
   }
   // 接続に成功
   if (isset($_SESSION['logedin'])) {
-    if (isset($_POST['packet_size']) and isset($_POST['gift_code']) and isset($_POST['created_date'])) {
+    if (isset($_POST['packet_size']) and isset($_POST['gift_code']) and isset($_POST['created_date']) and $_POST['gift_code'] != '') {
       // パケギフ登録
       $result = pg_query('
 INSERT INTO
