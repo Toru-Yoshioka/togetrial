@@ -68,6 +68,7 @@ WHERE
  AND
  published_timestamp IS NULL
   ');
+  $last_cnt = 0;
   if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
   } else {
