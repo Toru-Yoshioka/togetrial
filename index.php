@@ -56,7 +56,7 @@ WHERE
 //      $debug_mes = 'まだ３分経っていません';
     }
   }
-
+} else {
 // 残箱確認
   $result = pg_query('
 SELECT
@@ -75,7 +75,7 @@ WHERE
     $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
     $last_cnt = $rows['count'];
   }
-
+}
   $close_flag = pg_close($link);
 
   if ($close_flag){
