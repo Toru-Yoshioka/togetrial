@@ -5,10 +5,44 @@ if (!$link) {
   die('接続失敗です。'.pg_last_error());
 }
 // 接続に成功
-$setck = md5(uniqid());
+
+$is_limit = false;
 
 $ck = $_COOKIE['TSID'];
 if ($ck == '') {
+// 当選履歴
+$x_forwarded_for = $_SERVER['HTTP_X_FORWARDED_FOR'];
+$remote_host = gethostbyaddr($x_forwarded_for);
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+$today_date = date('Y-m-d') . ' 05:00:00';
+$result = pg_query('
+SELECT
+ count(*)
+FROM
+ lottery_history
+WHERE
+ drawing_result = 1
+ AND
+ drawing_timestamp >= \'' . $today_date . '\'
+ AND
+ remote_host = \'' . $remote_host . '\'
+ AND
+ user_agent = \'' . $user_agent . '\'
+');
+
+  if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+  } else {
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $self_recno = $rows['count'];
+    if ($self_recno > 0) {
+      $is_limit = true;
+    } else {
+      $is_limit = false;
+    }
+  }
+
+// 抽選可否
 $result = pg_query('
 select
  count(lh1.*)
@@ -144,6 +178,12 @@ if ($close_flag){
   <body>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
 <?php
+  if ($is_limit) {
+?>
+    <div class="gift_box_area">
+      <h1>また明日、遊びに来てネ♪</h1>
+    </div>
+<?php
   if ($lottery_enable && $ck == '') {
 ?>
     <div class="gift_box_area">
@@ -153,7 +193,7 @@ if ($close_flag){
       <h1>ギフトボックスをタップしてネ♪</h1>
     </div>
 <?php
-  } elseif ($last_cnt == 0) {
+  } elseif ($last_cnt <= 0) {
 ?>
     <div class="gift_box_area">
       <h1>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
