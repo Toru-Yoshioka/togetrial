@@ -14,7 +14,7 @@ $x_forwarded_for = $_SERVER['HTTP_X_FORWARDED_FOR'];
 $remote_host = gethostbyaddr($x_forwarded_for);
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-$lot_rand = mt_rand(0, 99);
+$lot_rand = mt_rand(0, 999);
 $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
 
 // ヒストリ登録
@@ -24,29 +24,45 @@ if (!$link) {
   die('接続失敗です。'.pg_last_error());
 }
 
-// フィルタチェック
-$filter_cnt = 0;
+// アクセス頻度チェック
 $result = pg_query('
-SELECT
- count(*)
-FROM
- ip_filter
-WHERE
+select
+ lh.remote_ip,
+ lh.between_cnt
+from
+(
+select
+ remote_ip,
+ count(*) as between_cnt
+from
+ lottery_history
+where
+ drawing_timestamp >= current_timestamp - interval \'60 minutes\'
+ and
  remote_ip = \'' . $x_forwarded_for . '\'
+group by 
+ remote_ip
+) as lh
+where
+  lh.between_cnt > 60
 ');
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
 } else {
-  $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-  $filter_cnt = $rows['count'];
+  $rows_cnt = pg_num_rows($result);
 }
-if ($filter_cnt > 0) {
-  $filter_sign = '';
-  $lot_result = 0;
-} elseif ($lot_rand >= 0 and $lot_rand <= 4) {
-  $lot_result = 1;
+// 抽選率振り分け
+$lot_result = 0;
+if ($rows_cnt > 0) {
+  // アクセス過多ユーザー
+  if ($lot_rand >= 0 and $lot_rand <= 4) {
+    $lot_result = 1;
+  }
 } else {
- $lot_result = 0;
+  // 通常ユーザー
+  if ($lot_rand >= 0 and $lot_rand <= 39) {
+    $lot_result = 1;
+  }
 }
 
 $result = pg_query('
@@ -194,7 +210,7 @@ if ($close_flag){
       <img src="./img/giftbox_empty.png"/>
       <h1>あれ･･･？ 空箱だったみたい(^_^;</h1>
       <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
-      <h1><a href="/">もう１度チャレンジする<?php print($filter_sign); ?></a></h1>
+      <h1><a href="/">もう１度チャレンジする</a></h1>
     </div>
 <?php
   }
