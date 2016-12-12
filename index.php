@@ -27,8 +27,6 @@ WHERE
  drawing_timestamp >= \'' . $today_date . '\'
  AND
  remote_host = \'' . $remote_host . '\'
- AND
- user_agent = \'' . $user_agent . '\'
 ');
 
   if (!$result) {
