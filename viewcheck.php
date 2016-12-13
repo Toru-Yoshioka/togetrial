@@ -61,7 +61,7 @@ date_default_timezone_set('Asia/Tokyo');
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
-      <h1>ギフトコード がでてきました！</h1>
+      <h1>『ギフトコード』 がでてきました！</h1>
       <figure style="position: relative;">
         <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
         <figcaption class="gift_info">
@@ -82,12 +82,12 @@ date_default_timezone_set('Asia/Tokyo');
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
     <div class="gift_box_area">
-      <h2>さざえ が出てきました！</h1>
+      <h1>『さざえ』 が出てきました！</h1>
       <figure style="position: relative;">
         <img src="./img/sazae_kai.png"/>
         <img class="open_box" src="./img/giftbox_empty_mini.png"/>
       </figure>
-      <h3>あざらしサンタのご馳走だよ♪<br/>さざえの「ふた」は、陸に打ち上げられても干からびないように、<br/>水を蓄える役割があるって知ってた？(・ω・)<br/>あとで、あざらしサンタに返しておいてあげてネ(笑)</h1>
+      <h1>あざらしサンタのご馳走だよ♪<br/>さざえの「ふた」は、陸に打ち上げられても干からびないように、<br/>水を蓄える役割があるって知ってた？(・ω・)<br/>あとで、あざらしサンタに返しておいてあげてネ(笑)</h1>
       <br/>
       <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
       <br/>
