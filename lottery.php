@@ -221,6 +221,9 @@ if ($close_flag){
 
       background-color:#ffffff;
     }
+    h1 {
+      font-size: 24pt; !important
+    }
     //-->
     </style>
   </head>
