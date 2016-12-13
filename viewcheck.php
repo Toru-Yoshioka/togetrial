@@ -50,6 +50,9 @@ date_default_timezone_set('Asia/Tokyo');
 
       background-color:#ffffff;
     }
+    h1 {
+      font-size: x-large;
+    }
     //-->
     </style>
   </head>
