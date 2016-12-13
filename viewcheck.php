@@ -36,7 +36,7 @@ date_default_timezone_set('Asia/Tokyo');
       color: #ffffff;
     }
     .open_box {
-      position: absolute;
+      position: relative;
       bottom: -128px;
       left: -64px;
     }
