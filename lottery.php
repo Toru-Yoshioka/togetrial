@@ -129,6 +129,38 @@ WHERE
   if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
   }
+} else {
+  // はずれ抽選
+  $lose_no = mt_rand(1, 25);
+
+  $result = pg_query('
+SELECT
+ item_seq,
+ item_name,
+ item_image_file,
+ item_description
+FROM
+ unsuccessful_items
+WHERE
+ item_seq = ' . $lose_no . '
+');
+
+  if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+  } else {
+    $rows_cnt = pg_num_rows($result);
+  }
+
+  if ($rows_cnt > 0) {
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $item_name = '『' . $rows['item_name'] . '』 がでてきました！';
+    $item_image_file = $rows['item_image_file'];
+    $item_description = $rows['item_description'];
+  } else {
+    $item_name = 'からっぽでした・・・';
+    $item_image_file = 'empty.png';
+    $item_description = '箱の中には何もはいっていませんでした。<br/>うっかり子供たちに届けられては大変です！<br/>あざらしサンタが片づけておきます。';
+  }
 }
 
 $close_flag = pg_close($link);
@@ -144,11 +176,13 @@ if ($close_flag){
     <style type="text/css">
     <!--
     body {
-      background-color: #D4D9D3;
+      background-color: #03265d;
+      background-image: url('./img/bg_xmas_lottery.png');
       background-position: center top;
       background-repeat: no-repeat;
       background-size: 100% auto;
-      color: #aa0000;
+      color: #ffffff;
+      font-weight: bold;
     }
     .xmas_logo {
       text-align: center;
@@ -169,6 +203,15 @@ if ($close_flag){
       background: rgba(0,0,0,.6);
       color: #ffffff;
     }
+    .open_box {
+      position: absolute;
+      bottom: 32px;
+      left: 48px;
+    }
+    .item_description {
+      background: rgba(0,0,0,.6);
+      font-size: xx-large;
+    }
     #fadeLayer {
       position:absolute;
       top:0px;
@@ -179,6 +222,9 @@ if ($close_flag){
 
       background-color:#ffffff;
     }
+    h1 {
+      font-size: xx-large;
+    }
     //-->
     </style>
   </head>
@@ -188,12 +234,13 @@ if ($close_flag){
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
-      <h1>ギフトコード</h1>
+      <h1>『ギフトコード』 がでてきました！</h1>
       <figure style="position: relative;">
         <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
         <figcaption class="gift_info">
           <?php print($gift_code); ?>
         </figcaption>
+        <img class="open_box" src="./img/giftbox_empty_mini.png"/>
       </figure>
       <h2>パケット容量: <?php print($packet_size); ?> MB</h2>
       <h2>有効期限: <?php print($limit_date); ?></h2>
@@ -206,10 +253,17 @@ if ($close_flag){
 <?php
   } else {
 ?>
-    <div class="gift_box_area" style="margin-top: 10%;">
-      <img src="./img/giftbox_empty.png"/>
-      <h1>あれ･･･？ 空箱だったみたい(^_^;</h1>
+    <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
+    <div class="gift_box_area">
+      <h1><?php print($item_name); ?></h1>
+      <figure style="position: relative;">
+        <img src="./img/<?php print($item_image_file); ?>"/>
+        <img class="open_box" src="./img/giftbox_empty_mini.png"/>
+      </figure>
+      <h1 class="item_description"><?php print($item_description); ?></h1>
+      <br/>
       <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
+      <br/>
       <h1><a href="/">もう１度チャレンジする</a></h1>
     </div>
 <?php
@@ -219,12 +273,6 @@ if ($close_flag){
     <script type="text/javascript">
     <!--
     $("#fadeLayer").fadeOut("slow");
-//    $(function(){
-//      setTimeout(function(){
-        // window.location.href = './lottery.php';
-//      },3000);
-//    });
-    //-->
     </script>
     <script type="text/javascript" src="./js/snowparticle.smart.1.js"></script>
   </body>
