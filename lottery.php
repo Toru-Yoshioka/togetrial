@@ -60,7 +60,7 @@ if ($rows_cnt > 0) {
   }
 } else {
   // 通常ユーザー
-  if ($lot_rand >= 0 and $lot_rand <= 149) {
+  if ($lot_rand >= 0 and $lot_rand <= 99) {
     $lot_result = 1;
   }
 }
