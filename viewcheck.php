@@ -48,7 +48,7 @@ date_default_timezone_set('Asia/Tokyo');
   </head>
   <body>
 <?php
-  $lot_result = 1;
+  $lot_result = $_GET['r'];
   if ($lot_result > 0) {
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
