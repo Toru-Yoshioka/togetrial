@@ -75,7 +75,7 @@ date_default_timezone_set('Asia/Tokyo');
   } else {
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
-    <div class="gift_box_area" style="margin-top: 10%;">
+    <div class="gift_box_area">
       <img src="./img/giftbox_empty.png"/>
       <h1>あれ･･･？ 空箱だったみたい(^_^;</h1>
       <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
