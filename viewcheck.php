@@ -84,6 +84,10 @@ if ($close_flag){
       bottom: 32px;
       left: 48px;
     }
+    .item_description {
+      background: rgba(0,0,0,.6);
+      font-size: xx-large;
+    }
     #fadeLayer {
       position:absolute;
       top:0px;
@@ -95,7 +99,7 @@ if ($close_flag){
       background-color:#ffffff;
     }
     h1 {
-      font-size: x-large;
+      font-size: xx-large;
     }
     //-->
     </style>
@@ -134,7 +138,7 @@ if ($close_flag){
         <img src="./img/<?php print($item_image_file); ?>"/>
         <img class="open_box" src="./img/giftbox_empty_mini.png"/>
       </figure>
-      <h1><?php print($item_description); ?></h1>
+      <h1 class="item_description"><?php print($item_description); ?></h1>
       <br/>
       <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
       <br/>
