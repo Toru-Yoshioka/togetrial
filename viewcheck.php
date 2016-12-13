@@ -1,5 +1,49 @@
 <?php
 date_default_timezone_set('Asia/Tokyo');
+$conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
+$link = pg_connect($conn);
+if (!$link) {
+  die('接続失敗です。'.pg_last_error());
+}
+
+// はずれ抽選
+$lose_no = mt_rand(1, 3);
+
+// 接続に成功
+$result = pg_query('
+SELECT
+ item_seq,
+ item_name,
+ item_image_file,
+ item_description
+FROM
+ unsuccessful_items
+WHERE
+ item_seq = ' . $lose_no . '
+');
+
+if (!$result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+} else {
+  $rows_cnt = pg_num_rows($result);
+}
+
+if ($rows_cnt > 0) {
+  $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+  $item_name = '『' . $rows['item_name'] . '』 がでてきました！';
+  $item_image_file = $rows['item_image_file'];
+  $item_description = $rows['item_description'];
+} else {
+  $item_name = 'からっぽでした・・・';
+  $item_image_file = 'empty.png';
+  $item_description = '箱の中には何もはいっていませんでした。<br/>うっかり子供たちに届けられては大変です！<br/>あざらしサンタが片づけておきます。';
+}
+
+$close_flag = pg_close($link);
+
+if ($close_flag){
+//     print('切断に成功しました。<br>');
+}
 ?>
 <html>
   <head>
@@ -59,8 +103,8 @@ date_default_timezone_set('Asia/Tokyo');
   <body>
 <?php
   $lot_result = $_GET['r'];
-  $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
   if ($lot_result > 0) {
+    $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
@@ -85,12 +129,12 @@ date_default_timezone_set('Asia/Tokyo');
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
     <div class="gift_box_area">
-      <h1>『さざえ』 が出てきました！</h1>
+      <h1><?php print($item_name); ?></h1>
       <figure style="position: relative;">
-        <img src="./img/sazae_kai.png"/>
+        <img src="./img/<?php print($item_image_file); ?>"/>
         <img class="open_box" src="./img/giftbox_empty_mini.png"/>
       </figure>
-      <h1>あざらしサンタのご馳走だよ♪<br/>さざえの「ふた」は、陸に打ち上げられても干からびないように、<br/>水を蓄える役割があるって知ってた？(・ω・)<br/>あとで、あざらしサンタに返しておいてあげてネ(笑)</h1>
+      <h1><?php print($item_description); ?></h1>
       <br/>
       <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
       <br/>
