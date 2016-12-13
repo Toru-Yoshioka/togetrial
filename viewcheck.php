@@ -37,8 +37,8 @@ date_default_timezone_set('Asia/Tokyo');
     }
     .open_box {
       position: absolute;
-      bottom: 128px;
-      left: 64px;
+      bottom: 32px;
+      left: 48px;
     }
     #fadeLayer {
       position:absolute;
