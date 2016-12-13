@@ -8,7 +8,8 @@ date_default_timezone_set('Asia/Tokyo');
     <style type="text/css">
     <!--
     body {
-      background-color: #D4D9D3;
+      background-color: #03265d;
+      background-image: url('./img/bg_xmas_lottery.png');
       background-position: center top;
       background-repeat: no-repeat;
       background-size: 100% auto;
@@ -49,6 +50,7 @@ date_default_timezone_set('Asia/Tokyo');
   <body>
 <?php
   $lot_result = $_GET['r'];
+  $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
   if ($lot_result > 0) {
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
