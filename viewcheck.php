@@ -13,7 +13,8 @@ date_default_timezone_set('Asia/Tokyo');
       background-position: center top;
       background-repeat: no-repeat;
       background-size: 100% auto;
-      color: #aa0000;
+      color: #ffff;
+      font-weight: bold;
     }
     .xmas_logo {
       text-align: center;
@@ -53,17 +54,17 @@ date_default_timezone_set('Asia/Tokyo');
   $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
   if ($lot_result > 0) {
 ?>
-    <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
+    <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
       <h1>ギフトコード</h1>
       <figure style="position: relative;">
         <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
         <figcaption class="gift_info">
-          <?php print($gift_code); ?>
+          ABCD1234
         </figcaption>
       </figure>
-      <h2>パケット容量: <?php print($packet_size); ?> MB</h2>
-      <h2>有効期限: <?php print($limit_date); ?></h2>
+      <h2>パケット容量: 50 MB</h2>
+      <h2>有効期限: 2016/12/15 23:59:59</h2>
       <br/>
       <h1>おめでとう！</h1>
       <h1><a target="_blank" href="https://my.mineo.jp/">mineo マイページ</a> から受け取ってネ♪</h1>
@@ -73,6 +74,7 @@ date_default_timezone_set('Asia/Tokyo');
 <?php
   } else {
 ?>
+    <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
     <div class="gift_box_area" style="margin-top: 10%;">
       <img src="./img/giftbox_empty.png"/>
       <h1>あれ･･･？ 空箱だったみたい(^_^;</h1>
