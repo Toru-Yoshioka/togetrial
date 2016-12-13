@@ -131,7 +131,7 @@ WHERE
   }
 } else {
   // はずれ抽選
-  $lose_no = mt_rand(1, 25);
+  $lose_no = mt_rand(1, 15);
 
   $result = pg_query('
 SELECT
