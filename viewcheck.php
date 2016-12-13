@@ -36,9 +36,9 @@ date_default_timezone_set('Asia/Tokyo');
       color: #ffffff;
     }
     .open_box {
-      position: relative;
-      bottom: -128px;
-      left: -64px;
+      position: absolute;
+      bottom: 128px;
+      left: 64px;
     }
     #fadeLayer {
       position:absolute;
@@ -62,12 +62,12 @@ date_default_timezone_set('Asia/Tokyo');
     <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
     <div class="gift_box_area">
       <h1>ギフトコード</h1>
-      <img class="open_box" src="./img/giftbox_empty_mini.png"/>
       <figure style="position: relative;">
         <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
         <figcaption class="gift_info">
           ABCD1234
         </figcaption>
+        <img class="open_box" src="./img/giftbox_empty_mini.png"/>
       </figure>
       <h2>パケット容量: 50 MB</h2>
       <h2>有効期限: 2016/12/15 23:59:59</h2>
@@ -82,8 +82,10 @@ date_default_timezone_set('Asia/Tokyo');
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
     <div class="gift_box_area">
-      <img class="open_box" src="./img/giftbox_empty_mini.png"/>
-      <img src="./img/giftbox_empty.png"/>
+      <figure style="position: relative;">
+        <img src="./img/giftbox_empty.png"/>
+        <img class="open_box" src="./img/giftbox_empty_mini.png"/>
+      </figure>
       <h1>あれ･･･？ 空箱だったみたい(^_^;</h1>
       <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
       <h1><a href="/">もう１度チャレンジする</a></h1>
