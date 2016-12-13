@@ -53,7 +53,7 @@ date_default_timezone_set('Asia/Tokyo');
   $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
   if ($lot_result > 0) {
 ?>
-    <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
+    <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
     <div class="gift_box_area">
       <h1>ギフトコード</h1>
       <figure style="position: relative;">
