@@ -13,7 +13,7 @@ date_default_timezone_set('Asia/Tokyo');
       background-position: center top;
       background-repeat: no-repeat;
       background-size: 100% auto;
-      color: #ffff;
+      color: #ffffff;
       font-weight: bold;
     }
     .xmas_logo {
