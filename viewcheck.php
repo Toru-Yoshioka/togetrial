@@ -86,7 +86,7 @@ if ($close_flag){
     }
     .item_description {
       background: rgba(0,0,0,.6);
-      font-size: large;
+      font-size: 32pt;
     }
     #fadeLayer {
       position:absolute;
@@ -99,7 +99,7 @@ if ($close_flag){
       background-color:#ffffff;
     }
     .item_name {
-      font-size: x-large;
+      font-size: 40pt;
     }
     //-->
     </style>
