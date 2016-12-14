@@ -135,16 +135,16 @@ if ($close_flag){
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
     <div class="gift_box_area">
-      <h2><?php print($item_name); ?></h2>
+      <h1><?php print($item_name); ?></h1>
       <figure style="position: relative;">
         <img src="./img/<?php print($item_image_file); ?>"/>
         <img class="open_box" src="./img/giftbox_empty_mini.png"/>
       </figure>
-      <h2><?php print($item_description); ?></h2>
+      <h1 class="item_description"><?php print($item_description); ?></h1>
       <br/>
       <h2>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h2>
       <br/>
-      <h2><a href="/">もう１度チャレンジする</a></h2>
+      <h1><a href="/">もう１度チャレンジする</a></h1>
     </div>
 <?php
   }
