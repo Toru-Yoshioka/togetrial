@@ -86,7 +86,10 @@ if ($close_flag){
     }
     .item_description {
       background: rgba(0,0,0,.6);
-      font-size: 20pt;
+      font-size: 10pt;
+    }
+    .footer {
+      font-size: 10pt;
     }
     #fadeLayer {
       position:absolute;
@@ -99,7 +102,7 @@ if ($close_flag){
       background-color:#ffffff;
     }
     .item_name {
-      font-size: 24pt;
+      font-size: 16pt;
     }
     //-->
     </style>
@@ -140,9 +143,9 @@ if ($close_flag){
       </figure>
       <div class="item_description"><?php print($item_description); ?></div>
       <br/>
-      <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
+      <div class="footer">サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</div>
       <br/>
-      <h1><a href="/">もう１度チャレンジする</a></h1>
+      <div class="footer"><a href="/">もう１度チャレンジする</a></div>
     </div>
 <?php
   }
