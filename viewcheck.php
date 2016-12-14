@@ -60,7 +60,7 @@ if ($close_flag){
       background-size: 100% auto;
       color: #ffffff;
       font-weight: bold;
-      -webkit-text-size-adjust;
+      -webkit-text-size-adjust: 100%;
     }
     .xmas_logo {
       text-align: center;
