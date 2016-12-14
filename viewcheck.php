@@ -86,7 +86,7 @@ if ($close_flag){
     }
     .item_description {
       background: rgba(0,0,0,.6);
-      font-size: xx-large;
+      font-size: large;
     }
     #fadeLayer {
       position:absolute;
@@ -98,8 +98,8 @@ if ($close_flag){
 
       background-color:#ffffff;
     }
-    h1 {
-      font-size: xx-large;
+    .item_name {
+      font-size: x-large;
     }
     //-->
     </style>
@@ -133,12 +133,12 @@ if ($close_flag){
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
     <div class="gift_box_area">
-      <h1><?php print($item_name); ?></h1>
+      <div class="item_name"><?php print($item_name); ?></div>
       <figure style="position: relative;">
         <img src="./img/<?php print($item_image_file); ?>"/>
         <img class="open_box" src="./img/giftbox_empty_mini.png"/>
       </figure>
-      <h1 class="item_description"><?php print($item_description); ?></h1>
+      <div class="item_description"><?php print($item_description); ?></div>
       <br/>
       <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
       <br/>
