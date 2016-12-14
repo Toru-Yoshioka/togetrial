@@ -171,6 +171,7 @@ if ($close_flag){
 ?>
 <html>
   <head>
+    <meta name="viewpoint" content="target-densitydpi=device-dpi, width=device-width, maximum-scale=1.0, user-scalable=yes"/>
     <title>Togekichi presents Xmas Gift</title>
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <style type="text/css">
@@ -183,7 +184,12 @@ if ($close_flag){
       background-size: 100% auto;
       color: #ffffff;
       font-weight: bold;
+      -webkit-text-size-adjust: 100%;
     }
+    a:hover { color: #ffffff; }
+    a:visited { color: #ffffff; }
+    a:link { color: #ffffff; }
+    a:active { color: #ffffff; }
     .xmas_logo {
       text-align: center;
       margin-top: 16px;
@@ -251,17 +257,17 @@ if ($close_flag){
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
     <div class="gift_box_area">
-      <h2><?php print($item_name); ?></h2>
+      <h1><?php print($item_name); ?></h1>
       <figure style="position: relative;">
         <img src="./img/<?php print($item_image_file); ?>"/>
         <figcaption class="gift_info"></figcaption>
         <img class="open_box" src="./img/giftbox_empty_mini.png"/>
       </figure>
-      <h2 class="item_description"><?php print($item_description); ?></h2>
+      <h1 class="item_description"><?php print($item_description); ?></h1>
       <br/>
       <h2>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h2>
       <br/>
-      <h2><a href="/">もう１度チャレンジする</a></h2>
+      <h1><a href="/">もう１度チャレンジする</a></h1>
     </div>
 <?php
   }
