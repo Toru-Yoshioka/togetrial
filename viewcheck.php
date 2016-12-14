@@ -47,6 +47,7 @@ if ($close_flag){
 ?>
 <html>
   <head>
+    <meta name="viewpoint" content="target-densitydpi=device-dpi, width=device-width, maximum-scale=1.0, user-scalable=yes"/>
     <title>Togekichi presents Xmas Gift</title>
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <style type="text/css">
@@ -59,6 +60,7 @@ if ($close_flag){
       background-size: 100% auto;
       color: #ffffff;
       font-weight: bold;
+      -webkit-text-size-adjust;
     }
     .xmas_logo {
       text-align: center;
@@ -86,10 +88,6 @@ if ($close_flag){
     }
     .item_description {
       background: rgba(0,0,0,.6);
-      font-size: 21pt;
-    }
-    .footer {
-      font-size: 21pt;
     }
     #fadeLayer {
       position:absolute;
@@ -100,9 +98,6 @@ if ($close_flag){
       height:100%;
 
       background-color:#ffffff;
-    }
-    .item_name {
-      font-size: 21pt;
     }
     //-->
     </style>
@@ -136,16 +131,16 @@ if ($close_flag){
 ?>
     <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
     <div class="gift_box_area">
-      <div class="item_name"><?php print($item_name); ?></div>
+      <h1><?php print($item_name); ?></h1>
       <figure style="position: relative;">
         <img src="./img/<?php print($item_image_file); ?>"/>
         <img class="open_box" src="./img/giftbox_empty_mini.png"/>
       </figure>
-      <div class="item_description"><?php print($item_description); ?></div>
+      <h1><?php print($item_description); ?></h1>
       <br/>
-      <div class="footer">サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</div>
+      <h1>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h1>
       <br/>
-      <div class="footer"><a href="/">もう１度チャレンジする</a></div>
+      <h1><a href="/">もう１度チャレンジする</a></h1>
     </div>
 <?php
   }
