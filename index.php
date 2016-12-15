@@ -83,10 +83,8 @@ WHERE
     $recno = $rows['count'];
     if ($recno > 0) {
       $lottery_enable = true;
-//      $debug_mes = '３分経ちました';
     } else {
       $lottery_enable = false;
-//      $debug_mes = 'まだ３分経っていません';
     }
   }
 }
@@ -174,15 +172,18 @@ if ($close_flag){
     </script>
   </head>
   <body>
-    <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
 <?php
   if ($is_limit) {
 ?>
-    <div class="gift_box_area">
-      <h1>また明日、遊びに来てネ♪</h1>
-    </div>
+    <div class="xmas_logo"><img src="./img/logo_xmas_successed.png"/></div>
+    <h3>今日はすでに当たり箱を開けました</h3>
 <?php
-  } elseif ($lottery_enable && $ck == '') {
+  } else {
+?>
+    <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
+<?php
+  }
+  if ( ($is_limit) || ($lottery_enable && $ck == '') ) {
 ?>
     <div class="gift_box_area">
       <a href="javascript:fade();">

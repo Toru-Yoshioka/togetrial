@@ -51,9 +51,41 @@ if (!$result) {
 } else {
   $rows_cnt = pg_num_rows($result);
 }
+// 当選履歴
+$today_date = date('Y-m-d') . ' 00:00:00';
+$result = pg_query('
+SELECT
+ count(*)
+FROM
+ lottery_history
+WHERE
+ drawing_result = 1
+ AND
+ drawing_timestamp >= \'' . $today_date . '\'
+ AND
+ remote_host = \'' . $remote_host . '\'
+');
+
+if (!$result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+} else {
+  $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+  $self_recno = $rows['count'];
+  if ($self_recno > 0) {
+    $is_limit = true;
+  } else {
+    $is_limit = false;
+  }
+}
+
 // 抽選率振り分け
 $lot_result = 0;
-if ($rows_cnt > 0) {
+if ($is_limit) {
+  // 当選済みユーザー
+  if ($lot_rand == 777) {
+    $lot_result = 1;
+  }
+｝elseif ($rows_cnt > 0) {
   // アクセス過多ユーザー
   if ($lot_rand >= 0 and $lot_rand <= 4) {
     $lot_result = 1;
@@ -131,7 +163,19 @@ WHERE
   }
 } else {
   // はずれ抽選
-  $lose_no = mt_rand(1, 15);
+  $result = pg_query('
+SELECT
+ count(item_seq)
+FROM
+ unsuccessful_items
+');
+  if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+  } else {
+    $lose_cnt = pg_num_rows($result);
+  }
+
+  $lose_no = mt_rand(1, ceil($lose_cnt * 1.33));
 
   $result = pg_query('
 SELECT
