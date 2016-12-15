@@ -138,7 +138,7 @@ WHERE
  AND
  published_timestamp IS NULL
 ORDER BY
- created_date DESC
+ created_date
 LIMIT 1
   ');
   if (!$result) {
