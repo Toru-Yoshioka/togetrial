@@ -164,22 +164,23 @@ WHERE
   }
 } else {
   // はずれ抽選
-//  $result = pg_query('
-//SELECT
-// count(*)
-//FROM
-// unsuccessful_items
-//');
-//  $lose_cnt = 0;
-//  if (!$result) {
-//    die('クエリーが失敗しました。'.pg_last_error());
-//  } else {
-//    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-//    $lose_cnt = $rows['count'];
-//  }
+  $result = pg_query('
+SELECT
+ count(*)
+FROM
+ unsuccessful_items
+');
+  $lose_cnt = 0;
+  if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+  } else {
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $lose_cnt = $rows['count'];
+  }
 
-//  $lose_no = mt_rand(1, ceil($lose_cnt * 1.33));
-  $lose_no = mt_rand(1, 15);
+  $lose_max = ceil($lose_cnt * 1.33);
+  $lose_no = mt_rand(1, $lose_max);
+//  $lose_no = mt_rand(1, 15);
 
   $result = pg_query('
 SELECT
