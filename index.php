@@ -15,31 +15,6 @@ if ($ck == '') {
 $x_forwarded_for = $_SERVER['HTTP_X_FORWARDED_FOR'];
 $remote_host = gethostbyaddr($x_forwarded_for);
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
-$today_date = date('Y-m-d') . ' 00:00:00';
-$result = pg_query('
-SELECT
- count(*)
-FROM
- lottery_history
-WHERE
- drawing_result = 1
- AND
- drawing_timestamp >= \'' . $today_date . '\'
- AND
- remote_host = \'' . $remote_host . '\'
-');
-
-  if (!$result) {
-    die('クエリーが失敗しました。'.pg_last_error());
-  } else {
-    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-    $self_recno = $rows['count'];
-    if ($self_recno > 0) {
-      $is_limit = true;
-    } else {
-      $is_limit = false;
-    }
-  }
 
 // 抽選可否
 $result = pg_query('
@@ -88,6 +63,33 @@ WHERE
     }
   }
 }
+
+$today_date = date('Y-m-d') . ' 00:00:00';
+$result = pg_query('
+SELECT
+ count(*)
+FROM
+ lottery_history
+WHERE
+ drawing_result = 1
+ AND
+ drawing_timestamp >= \'' . $today_date . '\'
+ AND
+ remote_host = \'' . $remote_host . '\'
+');
+
+f (!$result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+} else {
+  $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+  $self_recno = $rows['count'];
+  if ($self_recno > 0) {
+    $is_limit = true;
+  } else {
+    $is_limit = false;
+  }
+}
+
 // 残箱確認
 $result = pg_query('
 SELECT
