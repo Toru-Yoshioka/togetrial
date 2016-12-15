@@ -165,7 +165,7 @@ WHERE
   // はずれ抽選
   $result = pg_query('
 SELECT
- count(item_seq)
+ count(*)
 FROM
  unsuccessful_items
 ');
