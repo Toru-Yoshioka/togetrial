@@ -14,7 +14,7 @@ $x_forwarded_for = $_SERVER['HTTP_X_FORWARDED_FOR'];
 $remote_host = gethostbyaddr($x_forwarded_for);
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-$lot_rand = mt_rand(0, 999);
+$lot_rand = mt_rand(0, 9999);
 $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
 
 // ヒストリ登録
@@ -83,17 +83,15 @@ if (!$result) {
 $lot_result = 0;
 if ($is_limit) {
   // 当選済みユーザー
-  if ($lot_rand === 777) {
+  if ($lot_rand === 7777) {
     $lot_result = 1;
   }
 } elseif ($rows_cnt > 0) {
   // アクセス過多ユーザー
-  if ($lot_rand >= 0 and $lot_rand <= 4) {
-    $lot_result = 1;
-  }
+  $lot_result = 0;
 } else {
   // 通常ユーザー
-  if ($lot_rand >= 0 and $lot_rand <= 49) {
+  if ($lot_rand >= 0 and $lot_rand <= 499) {
     $lot_result = 1;
   }
 }
