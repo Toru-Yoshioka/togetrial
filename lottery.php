@@ -80,14 +80,13 @@ if (!$result) {
 //}
 
 // 抽選率振り分け
-//$lot_result = 0;
-//if ($is_limit) {
-//  // 当選済みユーザー
-//  if ($lot_rand == 777) {
-//    $lot_result = 1;
-//  }
-//｝elseif ($rows_cnt > 0) {
-if ($rows_cnt > 0) {
+$lot_result = 0;
+if ($is_limit) {
+  // 当選済みユーザー
+  if ($lot_rand == 777) {
+    $lot_result = 1;
+  }
+｝elseif ($rows_cnt > 0) {
   // アクセス過多ユーザー
   if ($lot_rand >= 0 and $lot_rand <= 4) {
     $lot_result = 1;
