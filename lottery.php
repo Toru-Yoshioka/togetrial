@@ -66,6 +66,7 @@ WHERE
  remote_host = \'' . $remote_host . '\'
 ');
 
+$is_limit = false;
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
 } else {
@@ -80,13 +81,12 @@ if (!$result) {
 
 // 抽選率振り分け
 $lot_result = 0;
-//if ($is_limit) {
-//  // 当選済みユーザー
-//  if ($lot_rand === 777) {
-//    $lot_result = 1;
-//  }
-//｝else
-if ($rows_cnt > 0) {
+if ($is_limit) {
+  // 当選済みユーザー
+  if ($lot_rand === 777) {
+    $lot_result = 1;
+  }
+｝elseif ($rows_cnt > 0) {
   // アクセス過多ユーザー
   if ($lot_rand >= 0 and $lot_rand <= 4) {
     $lot_result = 1;
@@ -180,7 +180,6 @@ FROM
 
   $lose_max = ceil($lose_cnt * 1.33);
   $lose_no = mt_rand(1, $lose_max);
-//  $lose_no = mt_rand(1, 15);
 
   $result = pg_query('
 SELECT
