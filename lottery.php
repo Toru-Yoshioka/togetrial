@@ -169,10 +169,12 @@ SELECT
 FROM
  unsuccessful_items
 ');
+  $lose_cnt = 0;
   if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
   } else {
-    $lose_cnt = pg_num_rows($result);
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $lose_cnt = $rows['count'];
   }
 
   $lose_no = mt_rand(1, ceil($lose_cnt * 1.33));
