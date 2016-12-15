@@ -172,17 +172,21 @@ if ($close_flag){
     </script>
   </head>
   <body>
+    <div class="xmas_logo">
 <?php
   if ($is_limit) {
 ?>
-    <div class="xmas_logo"><img src="./img/logo_xmas_successed.png"/></div>
-    <h3>今日はすでに当たり箱を開けました</h3>
+      <img src="./img/logo_xmas_successed.png"/>
+      <h2>今日はすでに当たり箱を開けました</h2>
 <?php
   } else {
 ?>
-    <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
+      <img src="./img/logo_xmas.png"/>
 <?php
   }
+?>
+    </div>
+<?php
   if ( ($is_limit) || ($lottery_enable && $ck == '') ) {
 ?>
     <div class="gift_box_area">
