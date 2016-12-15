@@ -77,8 +77,7 @@ WHERE
  AND
  remote_host = \'' . $remote_host . '\'
 ');
-
-f (!$result) {
+if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
 } else {
   $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
