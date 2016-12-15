@@ -80,12 +80,13 @@ if (!$result) {
 
 // 抽選率振り分け
 $lot_result = 0;
-if ($is_limit) {
-  // 当選済みユーザー
-  if ($lot_rand === 777) {
-    $lot_result = 1;
-  }
-｝elseif ($rows_cnt > 0) {
+//if ($is_limit) {
+//  // 当選済みユーザー
+//  if ($lot_rand === 777) {
+//    $lot_result = 1;
+//  }
+//｝else
+if ($rows_cnt > 0) {
   // アクセス過多ユーザー
   if ($lot_rand >= 0 and $lot_rand <= 4) {
     $lot_result = 1;
@@ -163,21 +164,22 @@ WHERE
   }
 } else {
   // はずれ抽選
-  $result = pg_query('
-SELECT
- count(*)
-FROM
- unsuccessful_items
-');
-  $lose_cnt = 0;
-  if (!$result) {
-    die('クエリーが失敗しました。'.pg_last_error());
-  } else {
-    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-    $lose_cnt = $rows['count'];
-  }
+//  $result = pg_query('
+//SELECT
+// count(*)
+//FROM
+// unsuccessful_items
+//');
+//  $lose_cnt = 0;
+//  if (!$result) {
+//    die('クエリーが失敗しました。'.pg_last_error());
+//  } else {
+//    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+//    $lose_cnt = $rows['count'];
+//  }
 
-  $lose_no = mt_rand(1, ceil($lose_cnt * 1.33));
+//  $lose_no = mt_rand(1, ceil($lose_cnt * 1.33));
+  $lose_no = mt_rand(1, 15);
 
   $result = pg_query('
 SELECT
