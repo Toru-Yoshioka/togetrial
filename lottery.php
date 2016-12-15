@@ -47,16 +47,42 @@ where
   lh.between_cnt > 60
 ');
 if (!$result) {
-  die('クエリーが失敗しました。(1)'.pg_last_error());
+  die('クエリーが失敗しました。'.pg_last_error());
 } else {
   $rows_cnt = pg_num_rows($result);
+}
+// 当選履歴
+$today_date = date('Y-m-d') . ' 00:00:00';
+$result = pg_query('
+SELECT
+ count(*)
+FROM
+ lottery_history
+WHERE
+ drawing_result = 1
+ AND
+ drawing_timestamp >= \'' . $today_date . '\'
+ AND
+ remote_host = \'' . $remote_host . '\'
+');
+
+if (!$result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+} else {
+  $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+  $self_recno = $rows['count'];
+  if ($self_recno > 0) {
+    $is_limit = true;
+  } else {
+    $is_limit = false;
+  }
 }
 
 // 抽選率振り分け
 $lot_result = 0;
 if ($is_limit) {
   // 当選済みユーザー
-  if ($lot_rand == 777) {
+  if ($lot_rand === 777) {
     $lot_result = 1;
   }
 ｝elseif ($rows_cnt > 0) {
@@ -93,7 +119,7 @@ INSERT INTO
  )
 ');
 if (!$result) {
-    die('クエリーが失敗しました。(2)'.pg_last_error());
+    die('クエリーが失敗しました。'.pg_last_error());
 }
 
 // 当選時
@@ -115,7 +141,7 @@ ORDER BY
 LIMIT 1
   ');
   if (!$result) {
-    die('クエリーが失敗しました。(3)'.pg_last_error());
+    die('クエリーが失敗しました。'.pg_last_error());
   } else {
     $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
     $gift_code = $rows['code'];
@@ -133,11 +159,25 @@ WHERE
  code = \'' . $gift_code . '\'
   ');
   if (!$result) {
-    die('クエリーが失敗しました。(4)'.pg_last_error());
+    die('クエリーが失敗しました。'.pg_last_error());
   }
 } else {
   // はずれ抽選
-  $lose_no = mt_rand(1, 15);
+  $result = pg_query('
+SELECT
+ count(*)
+FROM
+ unsuccessful_items
+');
+  $lose_cnt = 0;
+  if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+  } else {
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $lose_cnt = $rows['count'];
+  }
+
+  $lose_no = mt_rand(1, ceil($lose_cnt * 1.33));
 
   $result = pg_query('
 SELECT
@@ -150,9 +190,8 @@ FROM
 WHERE
  item_seq = ' . $lose_no . '
 ');
-
   if (!$result) {
-    die('クエリーが失敗しました。(5)'.pg_last_error());
+    die('クエリーが失敗しました。'.pg_last_error());
   } else {
     $rows_cnt = pg_num_rows($result);
   }
