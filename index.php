@@ -7,15 +7,8 @@ if (!$link) {
 }
 // 接続に成功
 
-$is_limit = false;
-
 $ck = $_COOKIE['TSID'];
 if ($ck == '') {
-// 当選履歴
-$x_forwarded_for = $_SERVER['HTTP_X_FORWARDED_FOR'];
-$remote_host = gethostbyaddr($x_forwarded_for);
-$user_agent = $_SERVER['HTTP_USER_AGENT'];
-
 // 抽選可否
 $result = pg_query('
 select
@@ -64,6 +57,10 @@ WHERE
   }
 }
 
+// 当選履歴
+$x_forwarded_for = $_SERVER['HTTP_X_FORWARDED_FOR'];
+$remote_host = gethostbyaddr($x_forwarded_for);
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
 $today_date = date('Y-m-d') . ' 00:00:00';
 $result = pg_query('
 SELECT
@@ -77,6 +74,7 @@ WHERE
  AND
  remote_host = \'' . $remote_host . '\'
 ');
+$is_limit = false;
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
 } else {
