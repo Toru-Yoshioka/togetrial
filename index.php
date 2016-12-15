@@ -186,7 +186,7 @@ if ($close_flag){
 ?>
     </div>
 <?php
-  if ( ($is_limit) || ($lottery_enable && $ck == '') ) {
+  if ($lottery_enable && $ck == '') {
 ?>
     <div class="gift_box_area">
       <a href="javascript:fade();">
