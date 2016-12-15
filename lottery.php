@@ -86,7 +86,7 @@ if ($is_limit) {
   if ($lot_rand === 777) {
     $lot_result = 1;
   }
-｝elseif ($rows_cnt > 0) {
+} elseif ($rows_cnt > 0) {
   // アクセス過多ユーザー
   if ($lot_rand >= 0 and $lot_rand <= 4) {
     $lot_result = 1;
