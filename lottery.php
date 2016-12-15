@@ -47,7 +47,7 @@ where
   lh.between_cnt > 60
 ');
 if (!$result) {
-  die('クエリーが失敗しました。'.pg_last_error());
+  die('クエリーが失敗しました。(1)'.pg_last_error());
 } else {
   $rows_cnt = pg_num_rows($result);
 }
@@ -121,7 +121,7 @@ INSERT INTO
  )
 ');
 if (!$result) {
-    die('クエリーが失敗しました。'.pg_last_error());
+    die('クエリーが失敗しました。(2)'.pg_last_error());
 }
 
 // 当選時
@@ -143,7 +143,7 @@ ORDER BY
 LIMIT 1
   ');
   if (!$result) {
-    die('クエリーが失敗しました。'.pg_last_error());
+    die('クエリーが失敗しました。(3)'.pg_last_error());
   } else {
     $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
     $gift_code = $rows['code'];
@@ -161,7 +161,7 @@ WHERE
  code = \'' . $gift_code . '\'
   ');
   if (!$result) {
-    die('クエリーが失敗しました。'.pg_last_error());
+    die('クエリーが失敗しました。(4)'.pg_last_error());
   }
 } else {
   // はずれ抽選
@@ -195,7 +195,7 @@ WHERE
 ');
 
   if (!$result) {
-    die('クエリーが失敗しました。'.pg_last_error());
+    die('クエリーが失敗しました。(5)'.pg_last_error());
   } else {
     $rows_cnt = pg_num_rows($result);
   }
