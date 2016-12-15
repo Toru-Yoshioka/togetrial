@@ -51,33 +51,6 @@ if (!$result) {
 } else {
   $rows_cnt = pg_num_rows($result);
 }
-// 当選履歴
-//$today_date = date('Y-m-d') . ' 00:00:00';
-//$result = pg_query('
-//SELECT
-// count(*)
-//FROM
-// lottery_history
-//WHERE
-// drawing_result = 1
-// AND
-// drawing_timestamp >= \'' . $today_date . '\'
-// AND
-// remote_host = \'' . $remote_host . '\'
-//');
-
-//$is_limit = false;
-//if (!$result) {
-//  die('クエリーが失敗しました。'.pg_last_error());
-//} else {
-//  $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-//  $self_recno = $rows['count'];
-//  if ($self_recno > 0) {
-//    $is_limit = true;
-//  } else {
-//    $is_limit = false;
-//  }
-//}
 
 // 抽選率振り分け
 $lot_result = 0;
@@ -164,21 +137,6 @@ WHERE
   }
 } else {
   // はずれ抽選
-//  $result = pg_query('
-//SELECT
-// count(*)
-//FROM
-// unsuccessful_items
-//');
-//  $lose_cnt = 0;
-//  if (!$result) {
-//    die('クエリーが失敗しました。'.pg_last_error());
-//  } else {
-//    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-//    $lose_cnt = $rows['count'];
-//  }
-
-//  $lose_no = mt_rand(1, ceil($lose_cnt * 1.33));
   $lose_no = mt_rand(1, 15);
 
   $result = pg_query('
