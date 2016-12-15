@@ -178,7 +178,7 @@ FROM
     $lose_cnt = $rows['count'];
   }
 
-  $lose_max = ceil($lose_cnt * 1.33);
+  $lose_max = ceil($lose_cnt * 1.40);
   $lose_no = mt_rand(1, $lose_max);
 
   $result = pg_query('
