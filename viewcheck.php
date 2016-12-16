@@ -7,7 +7,11 @@ if (!$link) {
 }
 
 // はずれ抽選
-$lose_no = mt_rand(1, 20);
+if ($_GET['no'] === '') {
+  $lose_no = mt_rand(1, 20);
+} else {
+  $lose_no = $_GET['no'];
+}
 
 // 接続に成功
 $result = pg_query('
