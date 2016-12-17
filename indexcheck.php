@@ -73,8 +73,8 @@ if ($close_flag){
       display: block;
       float:left;
       border: solid 1px #ffffff;
-      width: 20%;
-      height: 10%;
+      width: 24%;
+      height: 15%;
     }
     .item_gallery_title {
       clear: both;
