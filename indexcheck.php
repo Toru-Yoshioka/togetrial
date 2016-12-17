@@ -5,6 +5,8 @@ date_default_timezone_set('Asia/Tokyo');
   <head>
     <title>Togekichi presents Xmas Advent Gift</title>
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
     <style type="text/css">
     <!--
     body {
@@ -59,47 +61,60 @@ date_default_timezone_set('Asia/Tokyo');
     </script>
   </head>
   <body>
-    <div class="xmas_logo">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+	  <div class="swiper-slide">
+	    <div class="xmas_logo">
 <?php
   if ($_GET['r'] === '1') {
 ?>
-      <img src="./img/logo_xmas_successed.png"/>
-      <h2>今日はすでに当たり箱を開けました</h2>
+          <img src="./img/logo_xmas_successed.png"/>
+          <h2>今日はすでに当たり箱を開けました</h2>
 <?php
   } else {
 ?>
-      <img src="./img/logo_xmas.png"/>
+          <img src="./img/logo_xmas.png"/>
 <?php
   }
 ?>
-    </div>
+        </div>
 <?php
   if ($_GET['mode'] === '') {
 ?>
-    <div class="gift_box_area">
-      <a href="javascript:fade();">
-        <img src="./img/giftbox_off.png"/>
-      </a>
-      <h1>ギフトボックスをタップしてネ♪</h1>
-    </div>
+        <div class="gift_box_area">
+          <a href="javascript:fade();">
+            <img src="./img/giftbox_off.png"/>
+          </a>
+          <h1>ギフトボックスをタップしてネ♪</h1>
+        </div>
 <?php
   } elseif ($_GET['mode'] === 'empty') {
 ?>
-    <div class="gift_box_area">
-      <h1>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
-    </div>
+        <div class="gift_box_area">
+          <h1>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
+        </div>
 <?php
   } elseif ($_GET['mode'] === 'next') {
 ?>
-    <div class="gift_box_area">
-      <img src="./img/santa.png"/>
-      <h1>次のプレゼントを用意してるみたいだよ...<br/><a href="/">もう準備できた？</a></h1>
-    </div>
+        <div class="gift_box_area">
+          <img src="./img/santa.png"/>
+          <h1>次のプレゼントを用意してるみたいだよ...<br/><a href="/">もう準備できた？</a></h1>
+        </div>
 <?php
   }
 ?>
-    <div id="fadeLayer"></div>
-    <p>
-    </p>
+        <div id="fadeLayer"></div>
+        <p>
+        </p>
+	  </div>
+
+    </div>
+
+	<div class="swiper-pagination"></div>
+	<div class="swiper-button-prev"></div>
+	<div class="swiper-button-next"></div>
+	<div class="swiper-scrollbar"></div>
+
+  </div>
   </body>
 </html>
