@@ -175,12 +175,14 @@ if ($close_flag){
     $item_image_file = $rows['item_image_file'];
 ?>
             <li class="other_item">
-              <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/>
+              <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/><br/>
+              <h4><?php print($item_name); ?></h4>
             </li>
 <?php
   }
 ?>
           </ul>
+          <br/>
           <h1 class="item_gallery_title">はずれ箱ぎゃらりぃ</a></h1>
         </div>
 	  </div>
