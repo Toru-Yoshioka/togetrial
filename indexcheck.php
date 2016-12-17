@@ -29,11 +29,16 @@ date_default_timezone_set('Asia/Tokyo');
       padding-right: 2%;
     }
     .secret_item {
-      -webkit-filter: brightness(0.1);
-      -moz-filter: brightness(0.1);
-      -o-filter: brightness(0.1);
-      -ms-filter: brightness(0.1);
-      filter: brightness(0.1);
+      -webkit-filter: grayscale(100%);
+      -moz-filter: grayscale(100%);
+      -o-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+      filter: grayscale(100%);
+      -webkit-filter: brightness(0.05);
+      -moz-filter: brightness(0.05);
+      -o-filter: brightness(0.05);
+      -ms-filter: brightness(0.05);
+      filter: brightness(0.05);
     }
     #fadeLayer {
       position:absolute;
