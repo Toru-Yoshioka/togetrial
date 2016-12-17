@@ -74,7 +74,7 @@ date_default_timezone_set('Asia/Tokyo');
 ?>
     </div>
 <?php
-  if ($_GET['moode'] === '') {
+  if ($_GET['mode'] === '') {
 ?>
     <div class="gift_box_area">
       <a href="javascript:fade();">
