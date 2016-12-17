@@ -61,7 +61,7 @@ if ($close_flag){
       -ms-filter: brightness(0.05);
       filter: brightness(0.05);
       width: auto;
-      height: 75%;
+      height: 50%;
     }
     ul {
       list-style:none;
@@ -73,8 +73,8 @@ if ($close_flag){
       display: block;
       float:left;
       border: solid 1px #ffffff;
-      width: 24%;
-      height: 15%;
+      width: 15%;
+      height: 12%;
     }
     .item_gallery_title {
       clear: both;
