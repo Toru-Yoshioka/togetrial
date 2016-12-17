@@ -71,7 +71,8 @@ if ($close_flag){
     }
     .other_item {
       display: block;
-      border: 1px 1px 1px 1px #ffffff solid;
+      float:left;
+      border: solid 1px #ffffff;
       margin-left: 110px;
     }
     #fadeLayer {
