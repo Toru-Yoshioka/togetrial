@@ -29,16 +29,16 @@ date_default_timezone_set('Asia/Tokyo');
       padding-right: 2%;
     }
     .secret_item {
-      -webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
-      filter: grayscale(100%);
-      -webkit-filter: brightness(0.05);
-      -moz-filter: brightness(0.05);
-      -o-filter: brightness(0.05);
-      -ms-filter: brightness(0.05);
-      filter: brightness(0.05);
+      -webkit-filter: saturate(0%);
+      -moz-filter: saturate(0%);
+      -o-filter: saturate(0%);
+      -ms-filter: saturate(0%);
+      filter: saturate(0%);
+      -webkit-filter: brightness(0.02);
+      -moz-filter: brightness(0.02);
+      -o-filter: brightness(0.02);
+      -ms-filter: brightness(0.02);
+      filter: brightness(0.02);
     }
     #fadeLayer {
       position:absolute;
