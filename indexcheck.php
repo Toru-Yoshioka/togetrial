@@ -77,7 +77,7 @@ if ($close_flag){
       height: 10%;
     }
     .item_gallery_title {
-      float: both;
+      clear: both;
     }
     #fadeLayer {
       position:absolute;
