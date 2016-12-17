@@ -60,8 +60,6 @@ if ($close_flag){
       -o-filter: brightness(0.05);
       -ms-filter: brightness(0.05);
       filter: brightness(0.05);
-      width: 7%;
-      height: 7%;
     }
     ul {
       list-style:none;
@@ -75,6 +73,9 @@ if ($close_flag){
       border: solid 1px #ffffff;
       width: 10%;
       height: 10%;
+    }
+    .item_gallery_title {
+      float: none;
     }
     #fadeLayer {
       position:absolute;
@@ -178,7 +179,7 @@ if ($close_flag){
   }
 ?>
           </ul>
-          <h1>はずれ箱ぎゃらりぃ</a></h1>
+          <h1 class="item_gallery_title">はずれ箱ぎゃらりぃ</a></h1>
         </div>
 	  </div>
 	  <!-- page 2 -->
