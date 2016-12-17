@@ -175,8 +175,10 @@ if ($close_flag){
     $item_image_file = $rows['item_image_file'];
 ?>
             <li class="other_item">
-              <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/><br/>
-              <h4><?php print($item_name); ?></h4>
+              <a href="#">
+                <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/><br/>
+                <h4><?php print($item_name); ?></h4>
+              </a>
             </li>
 <?php
   }
