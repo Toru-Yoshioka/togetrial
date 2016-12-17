@@ -60,8 +60,8 @@ if ($close_flag){
       -o-filter: brightness(0.05);
       -ms-filter: brightness(0.05);
       filter: brightness(0.05);
-      width: auto;
-      height: 95%;
+      width: 90%;
+      height: auto;
     }
     ul {
       list-style:none;
