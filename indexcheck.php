@@ -83,13 +83,13 @@ date_default_timezone_set('Asia/Tokyo');
       <h1>ギフトボックスをタップしてネ♪</h1>
     </div>
 <?php
-  } elseif ($_GET['moode'] === 'empty') {
+  } elseif ($_GET['mode'] === 'empty') {
 ?>
     <div class="gift_box_area">
       <h1>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
     </div>
 <?php
-  } elseif ($_GET['moode'] === 'next') {
+  } elseif ($_GET['mode'] === 'next') {
 ?>
     <div class="gift_box_area">
       <img src="./img/santa.png"/>
