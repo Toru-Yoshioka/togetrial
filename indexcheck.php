@@ -28,6 +28,18 @@ date_default_timezone_set('Asia/Tokyo');
       padding-left: 2%;
       padding-right: 2%;
     }
+    .secret_item {
+      -webkit-filter: grayscale(100%);
+      -moz-filter: grayscale(100%);
+      -o-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+      filter: grayscale(100%);
+      -webkit-filter: saturate(0%);
+      -moz-filter: saturate(0%);
+      -o-filter: saturate(0%);
+      -ms-filter: saturate(0%);
+     filter: saturate(0%);
+    }
     #fadeLayer {
       position:absolute;
       top:0px;
@@ -116,7 +128,7 @@ date_default_timezone_set('Asia/Tokyo');
       <!-- page 2 -->
 	  <div class="swiper-slide">
         <div class="gift_box_area">
-          <img src="./img/santa.png"/>
+          <img class="secret_item" src="./img/santa.png"/>
           <h1>次のプレゼントを用意してるみたいだよ...<br/><a href="/">もう準備できた？</a></h1>
         </div>
 	  </div>
