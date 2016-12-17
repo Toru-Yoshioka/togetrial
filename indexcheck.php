@@ -1,5 +1,31 @@
 <?php
 date_default_timezone_set('Asia/Tokyo');
+$conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
+$link = pg_connect($conn);
+if (!$link) {
+  die('接続失敗です。'.pg_last_error());
+}
+
+$result = pg_query('
+SELECT
+ item_seq,
+ item_name,
+ item_image_file,
+ item_description
+FROM
+ unsuccessful_items
+ORDER BY
+ item_seq DESC
+');
+if (!$result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+}
+
+$close_flag = pg_close($link);
+
+if ($close_flag){
+//     print('切断に成功しました。<br>');
+}
 ?>
 <html>
   <head>
@@ -39,6 +65,8 @@ date_default_timezone_set('Asia/Tokyo');
       -o-filter: brightness(0.02);
       -ms-filter: brightness(0.02);
       filter: brightness(0.02);
+      width: 25%;
+      height: 25%;
     }
     #fadeLayer {
       position:absolute;
@@ -128,8 +156,17 @@ date_default_timezone_set('Asia/Tokyo');
       <!-- page 2 -->
 	  <div class="swiper-slide">
         <div class="gift_box_area">
-          <img class="secret_item" src="./img/santa.png"/>
-          <h1>次のプレゼントを用意してるみたいだよ...<br/><a href="/">もう準備できた？</a></h1>
+<?php
+  for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $item_name = $rows['item_name'];
+    $item_image_file = $rows['item_image_file'];
+?>
+          <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/>
+<?php
+  }
+?>
+          <h1>はずれ箱ぎゃらりぃ</a></h1>
         </div>
 	  </div>
 	  <!-- page 2 -->
