@@ -65,8 +65,8 @@ if ($close_flag){
       -o-filter: brightness(0.02);
       -ms-filter: brightness(0.02);
       filter: brightness(0.02);
-      width: 25%;
-      height: 25%;
+      width: 5%;
+      height: 5%;
     }
     #fadeLayer {
       position:absolute;
