@@ -134,10 +134,12 @@ date_default_timezone_set('Asia/Tokyo');
   <script type="text/javascript">
   <!--
     var swiper = new Swiper('.swiper-container', {
-    pagination: '.swiper-pagination',
-    paginationClickable: true,
-    parallax: true,
-    speed: 600,
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      parallax: true,
+      speed: 600,
     });
   //-->
   </script>
