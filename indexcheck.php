@@ -7,16 +7,6 @@ date_default_timezone_set('Asia/Tokyo');
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/swiper.min.css">
     <script src="js/swiper.min.js"></script>
-    <script>
-    <!--
-      var swiper = new Swiper('.swiper-container', {
-	    pagination: '.swiper-pagination',
-	    paginationClickable: true,
-	    parallax: true,
-	    speed: 600,
-      });
-    //-->
-    </script>
     <style type="text/css">
     <!--
     body {
@@ -140,5 +130,16 @@ date_default_timezone_set('Asia/Tokyo');
 	<div class="swiper-scrollbar"></div>
 
   </div>
+
+  <script type="text/javascript">
+  <!--
+    var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    parallax: true,
+    speed: 600,
+    });
+  //-->
+  </script>
   </body>
 </html>
