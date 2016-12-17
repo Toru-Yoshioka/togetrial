@@ -151,16 +151,20 @@ if ($close_flag){
       <!-- page 2 -->
 	  <div class="swiper-slide">
         <div class="gift_box_area">
+          <ul>
 <?php
   for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
     $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
     $item_name = $rows['item_name'];
     $item_image_file = $rows['item_image_file'];
 ?>
-          <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/>
+            <li>
+              <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/>
+            </li>
 <?php
   }
 ?>
+          </ul>
           <h1>はずれ箱ぎゃらりぃ</a></h1>
         </div>
 	  </div>
