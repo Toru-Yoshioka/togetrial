@@ -7,6 +7,16 @@ date_default_timezone_set('Asia/Tokyo');
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/swiper.min.css">
     <script src="js/swiper.min.js"></script>
+    <script>
+    <!--
+      var swiper = new Swiper('.swiper-container', {
+	    pagination: '.swiper-pagination',
+	    paginationClickable: true,
+	    parallax: true,
+	    speed: 600,
+      });
+    //-->
+    </script>
     <style type="text/css">
     <!--
     body {
@@ -61,23 +71,27 @@ date_default_timezone_set('Asia/Tokyo');
     </script>
   </head>
   <body>
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-	  <div class="swiper-slide">
-	    <div class="xmas_logo">
+
+    <div class="xmas_logo">
 <?php
   if ($_GET['r'] === '1') {
 ?>
-          <img src="./img/logo_xmas_successed.png"/>
+      <img src="./img/logo_xmas_successed.png"/>
           <h2>今日はすでに当たり箱を開けました</h2>
 <?php
   } else {
 ?>
-          <img src="./img/logo_xmas.png"/>
+      <img src="./img/logo_xmas.png"/>
 <?php
   }
 ?>
-        </div>
+    </div>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+	  <div class="swiper-slide">
+
+        <!-- page 1 -->
 <?php
   if ($_GET['mode'] === '') {
 ?>
@@ -107,6 +121,16 @@ date_default_timezone_set('Asia/Tokyo');
         <p>
         </p>
 	  </div>
+	  <!-- page 1 -->
+
+      <!-- page 2 -->
+	  <div class="swiper-slide">
+        <div class="gift_box_area">
+          <img src="./img/santa.png"/>
+          <h1>次のプレゼントを用意してるみたいだよ...<br/><a href="/">もう準備できた？</a></h1>
+        </div>
+	  </div>
+	  <!-- page 2 -->
 
     </div>
 
