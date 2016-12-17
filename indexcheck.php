@@ -63,6 +63,17 @@ if ($close_flag){
       width: 7%;
       height: 7%;
     }
+    ul {
+      list-style:none;
+    }
+    .first_item {
+      float:left;
+    }
+    .other_item {
+      display: block;
+      border: 1px 1px 1px 1px #ffffff solid;
+      margin-left: 110px;
+    }
     #fadeLayer {
       position:absolute;
       top:0px;
@@ -158,7 +169,7 @@ if ($close_flag){
     $item_name = $rows['item_name'];
     $item_image_file = $rows['item_image_file'];
 ?>
-            <li>
+            <li class="other_item">
               <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/>
             </li>
 <?php
