@@ -73,7 +73,8 @@ if ($close_flag){
       display: block;
       float:left;
       border: solid 1px #ffffff;
-      margin-left: 110px;
+      width: 10%;
+      height: 10%;
     }
     #fadeLayer {
       position:absolute;
