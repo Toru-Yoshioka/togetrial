@@ -77,7 +77,7 @@ date_default_timezone_set('Asia/Tokyo');
 ?>
     </div>
 
-  <div class="swiper-container">
+  <div class="swiper-container swiper-container-horizontal">
     <div class="swiper-wrapper">
 	  <div class="swiper-slide">
 
@@ -125,8 +125,8 @@ date_default_timezone_set('Asia/Tokyo');
     </div>
 
 	<div class="swiper-pagination"></div>
-	<div class="swiper-button-prev"></div>
-	<div class="swiper-button-next"></div>
+	<div class="swiper-button-prev swiper-button-white"></div>
+	<div class="swiper-button-next swiper-button-white"></div>
 	<div class="swiper-scrollbar"></div>
 
   </div>
