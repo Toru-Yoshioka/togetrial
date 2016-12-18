@@ -41,10 +41,10 @@ if (!$link) {
 // 接続に成功
 $result = pg_query('
 SELECT
- item_seq,
- item_name,
- item_image_file,
- item_description
+ ui.item_seq,
+ ui.item_name,
+ ui.item_image_file,
+ ui.item_description,
  uij.unique_key
 FROM
  unsuccessful_items ui LEFT OUTER JOIN
