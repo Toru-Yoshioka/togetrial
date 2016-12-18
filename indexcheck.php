@@ -66,15 +66,12 @@ if ($close_flag){
     ul {
       list-style:none;
     }
-    .first_item {
-      float:left;
-    }
     .other_item {
       display: block;
       float:left;
-      border: solid 1px #ffffff;
-      width: 180px;
-      height: auto;
+      border: solid 2px #ffffff;
+      width: 240px;
+      height: 240px;
     }
     .item_gallery_title {
       clear: both;
