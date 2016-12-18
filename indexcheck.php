@@ -70,8 +70,8 @@ if ($close_flag){
       display: block;
       float:left;
       border: solid 2px #ffffff;
-      width: 20%;
-      height: auto;
+      width: 180px;
+      height: 120px;
     }
     .item_gallery_title {
       clear: both;
