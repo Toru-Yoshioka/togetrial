@@ -35,7 +35,7 @@ SELECT
 FROM
  unsuccessful_items ui LEFT OUTER JOIN
  uniquekey_item_join uij
- ON ui.item_seq = uij.item_seq
+ ON ui.item_seq = uij.item_seq AND uij.unique_key = \'' . $tguid . '\'
 ORDER BY
  ui.item_seq DESC
 ');
