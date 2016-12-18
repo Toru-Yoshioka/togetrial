@@ -193,7 +193,7 @@ if ($close_flag){
 <?php
   for ($i = 0 ; $i < pg_num_rows($items_result) ; $i++){
     $rows = pg_fetch_array($items_result, NULL, PGSQL_ASSOC);
-    if (isset($unique_key = $rows['unique_key'])) {
+    if (isset($rows['unique_key'])) {
       $item_name = $rows['item_name'];
       $item_css = 'active_item';
     } else {
