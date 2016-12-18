@@ -70,8 +70,8 @@ if ($close_flag){
       display: block;
       float:left;
       border: solid 2px #ffffff;
-      width: 240px;
-      height: 240px;
+      width: 20%;
+      height: auto;
     }
     .item_gallery_title {
       clear: both;
@@ -125,7 +125,7 @@ if ($close_flag){
 ?>
     </div>
 
-  <div class="swiper-container swiper-container-horizontal">
+  <div class="swiper-container">
     <div class="swiper-wrapper">
 	  <div class="swiper-slide">
 
