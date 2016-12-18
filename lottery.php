@@ -203,7 +203,7 @@ FROM
   $lose_no = mt_rand(1, $lose_max);
 
 // はずれ履歴情報登録
-if ($lose_no <= $lose_max) {
+if ($lose_no <= $lose_cnt) {
   $result = pg_query('
 INSERT INTO
  uniquekey_item_join 
