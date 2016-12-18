@@ -224,7 +224,7 @@ INSERT INTO
   FROM
    uniquekey_item_join uij2
   WHERE
-   uij2.unique_key = '\' . $tguid . '\'
+   uij2.unique_key = \'' . $tguid . '\'
    AND
    uij2.item_seq = ' . $lose_no . '
  )
