@@ -299,10 +299,21 @@ if ($close_flag){
     $item_image_file = $rows['item_image_file'];
 ?>
             <li class="other_item">
+<?php
+      if (isset($rows['unique_key'])) {
+?>
               <a href="./view.php?no=<?php print($item_seq); ?>">
                 <img class="<?php print($item_css); ?>" src="./img/<?php print($item_image_file); ?>"/><br/>
                 <h4><?php print($item_name); ?></h4>
               </a>
+<?php
+      } else {
+?>
+                <img class="<?php print($item_css); ?>" src="./img/<?php print($item_image_file); ?>"/><br/>
+                <h4><?php print($item_name); ?></h4>
+<?php
+      }
+?>
             </li>
 <?php
   }
