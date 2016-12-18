@@ -3,6 +3,7 @@
     <meta name="viewpoint" content="target-densitydpi=device-dpi, width=device-width, maximum-scale=1.0, user-scalable=yes"/>
     <title>Togekichi presents Xmas Gift</title>
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.cookie.js"></script>
     <script type="text/javascript">
     <!--
       var tguid = localStorage.getItem('TGUID');

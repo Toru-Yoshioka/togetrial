@@ -2,6 +2,7 @@
   <head>
     <title>Togekichi presents Xmas Advent Gift</title>
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.cookie.js"></script>
     <link rel="stylesheet" href="css/swiper.min.css">
     <script src="js/swiper.min.js"></script>
     <script type="text/javascript">
