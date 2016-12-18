@@ -1,16 +1,39 @@
+<html>
+  <head>
+    <meta name="viewpoint" content="target-densitydpi=device-dpi, width=device-width, maximum-scale=1.0, user-scalable=yes"/>
+    <title>Togekichi presents Xmas Gift</title>
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+    <!--
+      var tguid = localStorage.getItem('TGUID');
+      if (tguid != null && tguid != '') {
+        $.cookie('TGUID', tguid);
+      }
+    //-->
+    </script>
 <?php
 date_default_timezone_set('Asia/Tokyo');
+
+$rf = $_SERVER['HTTP_REFERER'];
+if (isset($_COOKIE['TGUID']) and $rf == 'https://togetrial.herokuapp.com/') {
+  $tguid = $_COOKIE['TGUID'];
+} else {
+  header('Location: /');
+  exit;
+}
+
+// はずれNo
+if (isset($_GET['no'])) {
+  $lose_no = $_GET['no'];
+} else {
+  header('Location: /');
+  exit;
+}
+
 $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
 $link = pg_connect($conn);
 if (!$link) {
   die('接続失敗です。'.pg_last_error());
-}
-
-// はずれ抽選
-if ($_GET['no'] === '') {
-  $lose_no = mt_rand(1, 20);
-} else {
-  $lose_no = $_GET['no'];
 }
 
 // 接続に成功
@@ -20,12 +43,16 @@ SELECT
  item_name,
  item_image_file,
  item_description
+ uij.unique_key
 FROM
- unsuccessful_items
+ unsuccessful_items ui LEFT OUTER JOIN
+ uniquekey_item_join uij
+ ON ui.item_seq = uij.item_seq AND uij.unique_key = \'' . $tguid . '\'
 WHERE
- item_seq = ' . $lose_no . '
+ ui.item_seq = ' . $lose_no . '
+ORDER BY
+ ui.item_seq DESC
 ');
-
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
 } else {
@@ -49,11 +76,6 @@ if ($close_flag){
 //     print('切断に成功しました。<br>');
 }
 ?>
-<html>
-  <head>
-    <meta name="viewpoint" content="target-densitydpi=device-dpi, width=device-width, maximum-scale=1.0, user-scalable=yes"/>
-    <title>Togekichi presents Xmas Gift</title>
-    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <style type="text/css">
     <!--
     body {
@@ -111,32 +133,6 @@ if ($close_flag){
     </style>
   </head>
   <body>
-<?php
-  $lot_result = $_GET['r'];
-  if ($lot_result > 0) {
-    $card_no = str_pad(mt_rand(1, 4), 2, 0, STR_PAD_LEFT);
-?>
-    <div class="xmas_logo"><img src="./img/logo_xmas.png"/></div>
-    <div class="gift_box_area">
-      <h1>『ギフトコード』 がでてきました！</h1>
-      <figure style="position: relative;">
-        <img src="./img/giftcard_<?php print($card_no); ?>.png"/>
-        <figcaption class="gift_info">
-          ABCD1234
-        </figcaption>
-        <img class="open_box" src="./img/giftbox_empty_mini.png"/>
-      </figure>
-      <h2>パケット容量: 50 MB</h2>
-      <h2>有効期限: 2016/12/15 23:59:59</h2>
-      <br/>
-      <h1>おめでとう！</h1>
-      <h1><a target="_blank" href="https://my.mineo.jp/">mineo マイページ</a> から受け取ってネ♪</h1>
-      <br/>
-      <h1><a href="/">サンタの部屋にもどる</a></h1>
-    </div>
-<?php
-  } else {
-?>
     <div class="xmas_logo"><img src="./img/logo_xmas_silver.png"/></div>
     <div class="gift_box_area">
       <h1><?php print($item_name); ?></h1>
@@ -146,13 +142,9 @@ if ($close_flag){
       </figure>
       <h1 class="item_description"><?php print($item_description); ?></h1>
       <br/>
-      <h2>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h2>
       <br/>
-      <h1><a href="/">もう１度チャレンジする</a></h1>
+      <h1><a href="/">サンタの部屋へ戻る</a></h1>
     </div>
-<?php
-  }
-?>
     <div id="fadeLayer"></div>
     <script type="text/javascript">
     <!--
