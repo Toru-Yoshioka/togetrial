@@ -91,7 +91,7 @@ if ($is_limit) {
   $lot_result = 0;
 } else {
   // 通常ユーザー
-  if ($lot_rand >= 0 and $lot_rand <= 499) {
+  if ($lot_rand >= 0 and $lot_rand <= 749) {
     $lot_result = 1;
   }
 }
