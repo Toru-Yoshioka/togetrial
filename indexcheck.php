@@ -1,3 +1,17 @@
+<html>
+  <head>
+    <title>Togekichi presents Xmas Advent Gift</title>
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script type="text/javascript">
+    <!--
+      var tguid = localStorage.getItem('TGUID');
+      if (tguid != null && tguid != '') {
+        $.cookie('TGUID', tguid);
+      }
+    //-->
+    </script>
 <?php
 date_default_timezone_set('Asia/Tokyo');
 $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
@@ -5,17 +19,34 @@ $link = pg_connect($conn);
 if (!$link) {
   die('接続失敗です。'.pg_last_error());
 }
+
+if (isset($_COOKIE['TGUID'])) {
+  $tguid = $_COOKIE['TGUID'];
+}
+
 // はずれアイテム全件取得
 $items_result = pg_query('
 SELECT
- item_seq,
- item_name,
- item_image_file,
- item_description
+ ui.item_seq,
+ ui.item_name,
+ ui.item_image_file,
+ ui.item_description
 FROM
- unsuccessful_items
+ unsuccessful_items ui
+WHERE
+ ESISTS
+ (
+  SELECT
+   *
+  FROM
+   uniquekey_item_join uij
+  WHERE
+  uij.unique_key = \'' . $tguid . '\'
+  AND
+  uij.item_seq = ui.item_seq
+ )
 ORDER BY
- item_seq DESC
+ ui.item_seq DESC
 ');
 if (!$items_result) {
   die('クエリーが失敗しました。'.pg_last_error());
@@ -27,12 +58,6 @@ if ($close_flag){
 //     print('切断に成功しました。<br>');
 }
 ?>
-<html>
-  <head>
-    <title>Togekichi presents Xmas Advent Gift</title>
-    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
-    <link rel="stylesheet" href="css/swiper.min.css">
-    <script src="js/swiper.min.js"></script>
     <style type="text/css">
     <!--
     body {
