@@ -7,14 +7,14 @@
     <script type="text/javascript">
     <!--
       var tguid = localStorage.getItem('TGUID');
-      if (tguid == '') {
+      if (tguid === '') {
 <?php
         $tguid = 'TGUID_' . md5(uniqid());
 ?>
         localStorage.setItem('TGUID', '<?php print($tguid); ?>'); 
         $.cookie('TGUID', '<?php print($tguid); ?>');
       } else {
-        $.cookie('TGUID', locs);
+        $.cookie('TGUID', tguid);
       }
     //-->
     </script>
