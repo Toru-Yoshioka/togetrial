@@ -359,7 +359,7 @@ if ($close_flag){
       </figure>
       <h1 class="item_description"><?php print($item_description); ?></h1>
       <br/>
-      <h2>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。</h2>
+      <h2>サンタさんがすぐに<br/>次のプレゼントを用意してるみたいだよ。<?php print($tguid); ?></h2>
       <br/>
       <h1><a href="/">もう１度チャレンジする</a></h1>
     </div>
