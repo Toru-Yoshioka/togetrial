@@ -206,25 +206,27 @@ FROM
 if ($lose_no <= $lose_max) {
   $result = pg_query('
 INSERT INTO
- uniquekey_item_join
+ uniquekey_item_join 
  (
+  item_history_seq,
   unique_key,
   item_seq
- ) VALUES (
+ )
+ SELECT
+  nextval(\'item_history_seq\'),
   \'' . $tguid . '\',
   ' . $lose_no . '
- )
-WHERE
+ WHERE
  NOT EXISTS
  (
   SELECT
    *
   FROM
-   uniquekey_item_join
+   uniquekey_item_join uij2
   WHERE
-   unique_key = \'' . $tguid . '\'
+   uij2.unique_key = '\' . $tguid . '\'
    AND
-   item_seq = ' . $lose_no . '
+   uij2.item_seq = ' . $lose_no . '
  )
 ');
   if (!$result) {
