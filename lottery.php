@@ -226,7 +226,7 @@ WHERE
    AND
    item_seq = ' . $lose_no . '
  )
-  );
+');
   if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
   }
