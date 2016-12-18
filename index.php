@@ -15,6 +15,12 @@
     </script>
 <?php
 date_default_timezone_set('Asia/Tokyo');
+
+$ck = $_COOKIE['TSID'];
+if (isset($_COOKIE['TGUID'])) {
+  $tguid = $_COOKIE['TGUID'];
+}
+
 $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
 $link = pg_connect($conn);
 if (!$link) {
@@ -25,23 +31,22 @@ if (!$link) {
 // はずれアイテム全件取得
 $items_result = pg_query('
 SELECT
- item_seq,
- item_name,
- item_image_file,
- item_description
+ ui.item_seq,
+ ui.item_name,
+ ui.item_image_file,
+ ui.item_description,
+ uij.unique_key
 FROM
- unsuccessful_items
+ unsuccessful_items ui LEFT OUTER JOIN
+ uniquekey_item_join uij
+ ON ui.item_seq = uij.item_seq AND uij.unique_key = \'' . $tguid . '\'
 ORDER BY
- item_seq DESC
+ ui.item_seq DESC
 ');
 if (!$items_result) {
   die('クエリーが失敗しました。'.pg_last_error());
 }
 
-$ck = $_COOKIE['TSID'];
-if (isset($_COOKIE['TGUID'])) {
-  $tguid = $_COOKIE['TGUID'];
-}
 if ($ck == '') {
 // 抽選可否
 $result = pg_query('
