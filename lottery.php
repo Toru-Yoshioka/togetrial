@@ -1,10 +1,33 @@
+<html>
+  <head>
+    <meta name="viewpoint" content="target-densitydpi=device-dpi, width=device-width, maximum-scale=1.0, user-scalable=yes"/>
+    <title>Togekichi presents Xmas Gift</title>
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+    <!--
+      var tguid = localStorage.getItem('TGUID');
+      if (tguid == '') {
+<?php
+        $tguid = 'TGUID_' . md5(uniqid());
+?>
+        localStorage.setItem('TGUID', '<?php print($tguid); ?>'); 
+        $.cookie('TGUID', '<?php print($tguid); ?>');
+      } else {
+        $.cookie('TGUID', locs);
+      }
+    //-->
+    </script>
 <?php
 date_default_timezone_set('Asia/Tokyo');
 $ck = $_COOKIE['TSID'];
+if ($_COOKIE['TGUID'] != '') {
+  $tguid = $_COOKIE['TGUID'];
+}
 $rf = $_SERVER['HTTP_REFERER'];
 if ($ck == '' and $rf == 'https://togetrial.herokuapp.com/') {
   $unique_key = md5(uniqid());
-  setcookie('TSID', $unique_key, time()+30);
+   setcookie('TSID', $unique_key, time()+30);
 } else {
   header('Location: /');
   exit;
@@ -179,6 +202,37 @@ FROM
   $lose_max = ceil($lose_cnt * 1.40);
   $lose_no = mt_rand(1, $lose_max);
 
+// はずれ履歴情報登録
+if ($lose_no <= $lose_max) {
+  $result = pg_query('
+INSERT INTO
+ uniquekey_item_join
+ (
+  unique_key,
+  item_seq
+ ) VALUES (
+  \'' . $tguid . '\',
+  ' . $lose_no . '
+ )
+WHERE
+ NOT EXISTS
+ (
+  SELECT
+   *
+  FROM
+   uniquekey_item_join
+  WHERE
+   unique_key = \'' . $tguid . '\'
+   AND
+   item_seq = ' . $lose_no . '
+ )
+  );
+  if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+  }
+}
+
+// はずれアイテム情報取得
   $result = pg_query('
 SELECT
  item_seq,
@@ -214,11 +268,6 @@ if ($close_flag){
 //     print('切断に成功しました。<br>');
 }
 ?>
-<html>
-  <head>
-    <meta name="viewpoint" content="target-densitydpi=device-dpi, width=device-width, maximum-scale=1.0, user-scalable=yes"/>
-    <title>Togekichi presents Xmas Gift</title>
-    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <style type="text/css">
     <!--
     body {
