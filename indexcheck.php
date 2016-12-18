@@ -5,8 +5,8 @@ $link = pg_connect($conn);
 if (!$link) {
   die('接続失敗です。'.pg_last_error());
 }
-
-$result = pg_query('
+// はずれアイテム全件取得
+$items_result = pg_query('
 SELECT
  item_seq,
  item_name,
@@ -17,7 +17,7 @@ FROM
 ORDER BY
  item_seq DESC
 ');
-if (!$result) {
+if (!$items_result) {
   die('クエリーが失敗しました。'.pg_last_error());
 }
 
@@ -166,8 +166,8 @@ if ($close_flag){
         <div class="gift_box_area">
           <ul>
 <?php
-  for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
-    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+  for ($i = 0 ; $i < pg_num_rows($items_result) ; $i++){
+    $rows = pg_fetch_array($items_result, NULL, PGSQL_ASSOC);
     $item_name = $rows['item_name'];
     $item_image_file = $rows['item_image_file'];
 ?>

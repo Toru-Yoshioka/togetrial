@@ -1,3 +1,17 @@
+<html>
+  <head>
+    <title>Togekichi presents Xmas Advent Gift</title>
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script type="text/javascript">
+    <!--
+      var tguid = localStorage.getItem('TGUID');
+      if (tguid != null && tguid != '') {
+        $.cookie('TGUID', tguid);
+      }
+    //-->
+    </script>
 <?php
 date_default_timezone_set('Asia/Tokyo');
 $conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
@@ -7,7 +21,26 @@ if (!$link) {
 }
 // 接続に成功
 
+// はずれアイテム全件取得
+$items_result = pg_query('
+SELECT
+ item_seq,
+ item_name,
+ item_image_file,
+ item_description
+FROM
+ unsuccessful_items
+ORDER BY
+ item_seq DESC
+');
+if (!$items_result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+}
+
 $ck = $_COOKIE['TSID'];
+if (isset($_COOKIE['TGUID'])) {
+  $tguid = $_COOKIE['TGUID'];
+}
 if ($ck == '') {
 // 抽選可否
 $result = pg_query('
@@ -113,10 +146,6 @@ if ($close_flag){
 }
 
 ?>
-<html>
-  <head>
-    <title>Togekichi presents Xmas Advent Gift</title>
-    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <style type="text/css">
     <!--
     body {
@@ -137,6 +166,28 @@ if ($close_flag){
     .gift_box_area img {
       padding-left: 2%;
       padding-right: 2%;
+    }
+    .secret_item {
+      -webkit-filter: brightness(0.05);
+      -moz-filter: brightness(0.05);
+      -o-filter: brightness(0.05);
+      -ms-filter: brightness(0.05);
+      filter: brightness(0.05);
+      width: auto;
+      height: 50%;
+    }
+    ul {
+      list-style:none;
+    }
+    .other_item {
+      display: block;
+      float:left;
+      border: solid 2px #ffffff;
+      width: 180px;
+      height: 120px;
+    }
+    .item_gallery_title {
+      clear: both;
     }
     #fadeLayer {
       position:absolute;
@@ -185,6 +236,13 @@ if ($close_flag){
   }
 ?>
     </div>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+	  <div class="swiper-slide">
+
+        <!-- page 1 -->
+
 <?php
   if ($lottery_enable && $ck == '') {
 ?>
@@ -213,5 +271,58 @@ if ($close_flag){
     <div id="fadeLayer"></div>
     <p>
     </p>
+
+	  </div>
+	  <!-- page 1 -->
+
+      <!-- page 2 -->
+	  <div class="swiper-slide">
+        <div class="gift_box_area">
+          <ul>
+<?php
+  for ($i = 0 ; $i < pg_num_rows($items_result) ; $i++){
+    $rows = pg_fetch_array($items_result, NULL, PGSQL_ASSOC);
+//    $item_name = $rows['item_name'];
+      $item_name = '？？？？';
+    $item_image_file = $rows['item_image_file'];
+?>
+            <li class="other_item">
+              <a href="#">
+                <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/><br/>
+                <h4><?php print($item_name); ?></h4>
+              </a>
+            </li>
+<?php
+  }
+?>
+          </ul>
+          <br/>
+          <h1 class="item_gallery_title">はずれ箱ぎゃらりぃ</a></h1>
+        </div>
+	  </div>
+	  <!-- page 2 -->
+
+    </div>
+
+	<div class="swiper-pagination"></div>
+	<div class="swiper-button-prev swiper-button-white"></div>
+	<div class="swiper-button-next swiper-button-white"></div>
+	<div class="swiper-scrollbar"></div>
+
+  </div>
+
+  <script type="text/javascript">
+  <!--
+    var swiper = new Swiper('.swiper-container', {
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      parallax: true,
+      speed: 600,
+    });
+  //-->
+  </script>
+
   </body>
 </html>
