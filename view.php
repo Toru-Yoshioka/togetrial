@@ -16,8 +16,8 @@
 date_default_timezone_set('Asia/Tokyo');
 
 $rf = $_SERVER['HTTP_REFERER'];
-//if (isset($_COOKIE['TGUID']) and $rf == 'https://togetrial.herokuapp.com/') {
-if (isset($_COOKIE['TGUID'])) {
+if (isset($_COOKIE['TGUID']) and $rf == 'https://togetrial.herokuapp.com/') {
+//if (isset($_COOKIE['TGUID'])) {
   $tguid = $_COOKIE['TGUID'];
 } else {
   header('Location: /');

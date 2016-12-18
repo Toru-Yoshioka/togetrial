@@ -2,6 +2,7 @@
   <head>
     <title>Togekichi presents Xmas Advent Gift</title>
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.cookie.js"></script>
     <link rel="stylesheet" href="css/swiper.min.css">
     <script src="js/swiper.min.js"></script>
     <script type="text/javascript">
@@ -176,6 +177,15 @@ if ($close_flag){
       width: auto;
       height: 50%;
     }
+    .active_item {
+      -webkit-filter: brightness(1.0);
+      -moz-filter: brightness(1.0);
+      -o-filter: brightness(1.0);
+      -ms-filter: brightness(1.0);
+      filter: brightness(1.0);
+      width: auto;
+      height: 50%;
+    }
     ul {
       list-style:none;
     }
@@ -278,13 +288,19 @@ if ($close_flag){
 <?php
   for ($i = 0 ; $i < pg_num_rows($items_result) ; $i++){
     $rows = pg_fetch_array($items_result, NULL, PGSQL_ASSOC);
-//    $item_name = $rows['item_name'];
-      $item_name = '？？？？';
+    $item_seq = $rows['item_seq'];
+    if (isset($rows['unique_key'])) {
+      $item_name = $rows['item_name'];
+      $item_css = 'active_item';
+    } else {
+      $item_name = '？？？';
+      $item_css = 'secret_item';
+    }
     $item_image_file = $rows['item_image_file'];
 ?>
             <li class="other_item">
-              <a href="#">
-                <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/><br/>
+              <a href="./view.php?no=<?php print($item_seq); ?>">
+                <img class="<?php print($item_css); ?>" src="./img/<?php print($item_image_file); ?>"/><br/>
                 <h4><?php print($item_name); ?></h4>
               </a>
             </li>
