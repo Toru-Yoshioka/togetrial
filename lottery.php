@@ -21,7 +21,7 @@
 <?php
 date_default_timezone_set('Asia/Tokyo');
 $ck = $_COOKIE['TSID'];
-if ($_COOKIE['TGUID'] != '') {
+if (isset($_COOKIE['TGUID'])) {
   $tguid = $_COOKIE['TGUID'];
 }
 $rf = $_SERVER['HTTP_REFERER'];
