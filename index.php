@@ -268,10 +268,6 @@ if ($close_flag){
 <?php
   }
 ?>
-    <div id="fadeLayer"></div>
-    <p>
-    </p>
-
 	  </div>
 	  <!-- page 1 -->
 
@@ -310,6 +306,8 @@ if ($close_flag){
 	<div class="swiper-scrollbar"></div>
 
   </div>
+
+  <div id="fadeLayer"></div>
 
   <script type="text/javascript">
   <!--
