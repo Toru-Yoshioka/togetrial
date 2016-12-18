@@ -7,7 +7,7 @@
     <script type="text/javascript">
     <!--
       var tguid = localStorage.getItem('TGUID');
-      if (tguid === '') {
+      if (tguid == null || tguid == '') {
 <?php
         $tguid = 'TGUID_' . md5(uniqid());
 ?>
