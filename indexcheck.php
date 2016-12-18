@@ -30,21 +30,14 @@ SELECT
  ui.item_seq,
  ui.item_name,
  ui.item_image_file,
- ui.item_description
+ ui.item_description,
+ uij.unique_key
 FROM
- unsuccessful_items ui
+ unsuccessful_items ui LEFT OUTER JOIN
+ uniquekey_item_join uij
+ ON ui.item_seq = uij.item_seq
 WHERE
- ESISTS
- (
-  SELECT
-   *
-  FROM
-   uniquekey_item_join uij
-  WHERE
-  uij.unique_key = \'' . $tguid . '\'
-  AND
-  uij.item_seq = ui.item_seq
- )
+ uij.unique_key = \'' . $tguid . '\'
 ORDER BY
  ui.item_seq DESC
 ');
@@ -195,11 +188,12 @@ if ($close_flag){
     $rows = pg_fetch_array($items_result, NULL, PGSQL_ASSOC);
     $item_name = $rows['item_name'];
     $item_image_file = $rows['item_image_file'];
+    $unique_key = $rows['unique_key'];
 ?>
             <li class="other_item">
               <a href="#">
                 <img class="secret_item" src="./img/<?php print($item_image_file); ?>"/><br/>
-                <h4><?php print($item_name); ?></h4>
+                <h4><?php print($item_name); ?><br/><?php print($unique_key); ?></h4>
               </a>
             </li>
 <?php
