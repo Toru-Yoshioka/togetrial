@@ -155,8 +155,8 @@ if ($close_flag){
     <style type="text/css">
     <!--
     body {
-      background-color: #650000;
-      background-image: url('./img/bg_xmas_top.png');
+      background-color: #734529;
+      background-image: url('./img/ochanoma.png');
       background-position: center top;
       background-repeat: no-repeat;
       background-size: 100% auto;
@@ -197,7 +197,8 @@ if ($close_flag){
     .other_item {
       display: block;
       float:left;
-      border: solid 2px #ffffff;
+      border: solid 4px #000000;
+      background-color: #d45437;
       width: 180px;
       height: 120px;
     }
@@ -241,12 +242,12 @@ if ($close_flag){
 <?php
   if ($is_limit) {
 ?>
-      <img src="./img/logo_xmas_successed.png"/>
-      <h2>今日はすでに当たり箱を開けました</h2>
+      <img src="./img/shimekazari.png"/>
+          <h2>今日はすでに当たり箱を開けました</h2>
 <?php
   } else {
 ?>
-      <img src="./img/logo_xmas.png"/>
+      <img src="./img/shimekazari.png"/>
 <?php
   }
 ?>
@@ -263,21 +264,21 @@ if ($close_flag){
 ?>
     <div class="gift_box_area">
       <a href="javascript:fade();">
-        <img src="./img/giftbox_off.png"/>
+        <img src="./img/furoshiki_temiyage.png"/>
       </a>
-      <h1>ギフトボックスをタップしてネ♪</h1>
+      <h1>風呂敷包みをタップしてネ♪</h1>
     </div>
 <?php
   } elseif ($last_cnt <= 0) {
 ?>
     <div class="gift_box_area">
-      <h1>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
+      <h1>Coming soon... ?</h1>
     </div>
 <?php
   } else {
 ?>
     <div class="gift_box_area">
-      <img src="./img/santa.png"/>
+      <img src="./img/syougatsu_daruma.png"/>
       <h1>次のプレゼントを用意してるみたいだよ...<br/><a href="/">もう準備できた？</a></h1>
     </div>
 <?php
@@ -325,7 +326,7 @@ if ($close_flag){
 ?>
           </ul>
           <br/>
-          <h1 class="item_gallery_title">はずれ箱ぎゃらりぃ</a></h1>
+          <h1 class="item_gallery_title">あざらしおせち ぎゃらりぃ</a></h1>
         </div>
 	  </div>
 	  <!-- page 2 -->

@@ -96,7 +96,7 @@ if ($close_flag){
     .other_item {
       display: block;
       float:left;
-      border: solid 2px #000000;
+      border: solid 4px #000000;
       background-color: #d45437;
       width: 180px;
       height: 120px;
@@ -171,13 +171,13 @@ if ($close_flag){
   } elseif ($_GET['mode'] === 'empty') {
 ?>
         <div class="gift_box_area">
-          <h1>盛り付けてほしい小包は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
+          <h1>coming soon... ?</h1>
         </div>
 <?php
   } elseif ($_GET['mode'] === 'next') {
 ?>
         <div class="gift_box_area">
-          <img src="./img/santa.png"/>
+          <img src="./img/syougatsu_daruma.png"/>
           <h1>今はお出かけしてるみたいだよ...<br/><a href="/">もう帰ってきた？</a></h1>
         </div>
 <?php
