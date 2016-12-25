@@ -53,7 +53,7 @@ if ($close_flag){
     <style type="text/css">
     <!--
     body {
-      background-color: #650000;
+      background-color: #734529;
       background-image: url('./img/ochanoma.png');
       background-position: center top;
       background-repeat: no-repeat;
