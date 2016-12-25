@@ -96,7 +96,8 @@ if ($close_flag){
     .other_item {
       display: block;
       float:left;
-      border: solid 2px #ffffff;
+      border: solid 2px #000000;
+      background-color: #d45437;
       width: 180px;
       height: 120px;
     }
