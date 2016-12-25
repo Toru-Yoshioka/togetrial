@@ -161,7 +161,7 @@ if ($close_flag){
 ?>
         <div class="gift_box_area">
           <a href="javascript:fade();">
-            <img src="./img/furoshiki_temiyage.png.png"/>
+            <img src="./img/furoshiki_temiyage.png"/>
           </a>
           <h1>風呂敷包みをタップしてネ♪</h1>
         </div>
