@@ -65,6 +65,7 @@ if ($close_flag){
       margin-top: 64px;
     }
     .gift_box_area {
+      margin-top: 80px;
       text-align: center;
     }
     .gift_box_area img {
