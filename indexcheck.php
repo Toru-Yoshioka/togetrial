@@ -161,22 +161,22 @@ if ($close_flag){
 ?>
         <div class="gift_box_area">
           <a href="javascript:fade();">
-            <img src="./img/giftbox_off.png"/>
+            <img src="./img/furoshiki_temiyage.png.png"/>
           </a>
-          <h1>ギフトボックスをタップしてネ♪</h1>
+          <h1>風呂敷包みをタップしてネ♪</h1>
         </div>
 <?php
   } elseif ($_GET['mode'] === 'empty') {
 ?>
         <div class="gift_box_area">
-          <h1>お手伝いしてほしい箱は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
+          <h1>盛り付けてほしい小包は今は無いみたい。<br/>また、時間が経ったら来てみてね♪</h1>
         </div>
 <?php
   } elseif ($_GET['mode'] === 'next') {
 ?>
         <div class="gift_box_area">
           <img src="./img/santa.png"/>
-          <h1>次のプレゼントを用意してるみたいだよ...<br/><a href="/">もう準備できた？</a></h1>
+          <h1>今はお出かけしてるみたいだよ...<br/><a href="/">もう帰ってきた？</a></h1>
         </div>
 <?php
   }
@@ -215,7 +215,7 @@ if ($close_flag){
 ?>
           </ul>
           <br/>
-          <h1 class="item_gallery_title">はずれ箱ぎゃらりぃ</a></h1>
+          <h1 class="item_gallery_title">あざらしおせち ぎゃらりぃ</a></h1>
         </div>
 	  </div>
 	  <!-- page 2 -->
