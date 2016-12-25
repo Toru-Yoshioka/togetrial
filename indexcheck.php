@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Togekichi presents Xmas Advent Gift</title>
+    <title>Togekichi presents New Year Gift</title>
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="./js/jquery.cookie.js"></script>
     <link rel="stylesheet" href="css/swiper.min.css">
@@ -54,7 +54,7 @@ if ($close_flag){
     <!--
     body {
       background-color: #650000;
-      background-image: url('./img/bg_xmas_top.png');
+      background-image: url('./img/ochanoma.png');
       background-position: center top;
       background-repeat: no-repeat;
       background-size: 100% auto;
@@ -140,12 +140,12 @@ if ($close_flag){
 <?php
   if ($_GET['r'] === '1') {
 ?>
-      <img src="./img/logo_xmas_successed.png"/>
+      <img src="./img/shimekazari.png"/>
           <h2>今日はすでに当たり箱を開けました</h2>
 <?php
   } else {
 ?>
-      <img src="./img/logo_xmas.png"/>
+      <img src="./img/shimekazari.png"/>
 <?php
   }
 ?>
